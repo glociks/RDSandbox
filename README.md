@@ -7,7 +7,7 @@
 [![Vite](https://img.shields.io/badge/Vite-6.0-646cff.svg?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![WebGL2](https://img.shields.io/badge/Compute-WebGL2%20GPGPU-990000.svg?style=flat-square&logo=webgl&logoColor=white)](https://www.khronos.org/webgl/)
 [![WebCodecs](https://img.shields.io/badge/Video-WebCodecs%20H.264-ff6600.svg?style=flat-square)](https://w3c.github.io/webcodecs/)
-[![Vitest](https://shields.io)](https://vitest.dev
+[![Vitest](https://shields.io)](https://vitest.dev/)
 [![License: Custom](https://img.shields.io/badge/License-Custom-yellow.svg?style=flat-square)](LICENSE)
 
 A modular, physics-based visual effects workspace utilizing React and hardware-accelerated WebGL.
