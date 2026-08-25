@@ -1,0 +1,522 @@
+/* Add Effect & Seed Button & Dropdown Styles */
+.ui-add-effect-btn {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  color: #e0e7ff;
+  font-weight: 400;
+  transition: all 150ms ease;
+}
+
+.ui-add-effect-btn:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28) 0%, rgba(168, 85, 247, 0.28) 100%);
+  border-color: rgba(129, 140, 248, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+.ui-add-effect-menu {
+  background: rgba(16, 16, 20, 0.97);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.85), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 3px;
+  margin-top: 4px;
+}
+
+.ui-add-effect-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ui-add-effect-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-add-effect-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 3px 2px;
+}
+
+.ui-add-effect-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ui-add-effect-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 3.5px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #d4d4d8;
+  transition: background 100ms ease, color 100ms ease;
+  cursor: pointer;
+  text-align: left;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.ui-add-effect-item:hover {
+  background: rgba(99, 102, 241, 0.16);
+  border-color: rgba(99, 102, 241, 0.25);
+  color: #ffffff;
+}
+
+.ui-add-effect-item .effect-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  background: transparent !important;
+  color: #818cf8;
+}
+
+.ui-add-effect-title {
+  font-size: 11px;
+  font-weight: 400;
+  color: #e4e4e7;
+  line-height: 1.25;
+}
+
+.ui-add-effect-item:hover .ui-add-effect-title {
+  color: #ffffff;
+}
+
+.ui-add-effect-desc {
+  font-size: 9px;
+  font-weight: 400;
+  color: #71717a;
+  line-height: 1.2;
+}
+
+.ui-photosensitivity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  font-size: 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1.5px 4px;
+  border-radius: 3px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+  margin-left: 4px;
+}
+
+.ui-add-seed-group-title {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #71717a;
+  padding: 3px 6px 1px 6px;
+}
+
+/* Effect Header Delete Trash Button */
+.ui-effect-trash-btn {
+  color: #71717a;
+  padding: 3px;
+  border-radius: 3px;
+  transition: all 120ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-effect-trash-btn:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+  transform: scale(1.1);
+}
+
+/* Draggable Layer Items */
+.ui-layer-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 7px;
+  background: rgba(24, 24, 27, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  font-weight: 400;
+  transition: all 120ms ease;
+  cursor: grab;
+  user-select: none;
+}
+
+.ui-layer-item:hover {
+  background: rgba(39, 39, 42, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ui-layer-item.is-dragging {
+  opacity: 0.4;
+  border: 1px dashed #6366f1;
+  cursor: grabbing;
+}
+
+.ui-layer-item.drop-target-above {
+  border-top: 2px solid #6366f1;
+}
+
+.ui-layer-item.drop-target-below {
+  border-bottom: 2px solid #6366f1;
+}
+
+.ui-drag-handle {
+  cursor: grab;
+  color: #52525b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.ui-drag-handle:hover {
+  color: #d4d4d8;
+}
+
+/* Full Color Brush Controls */
+.ui-color-picker-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ui-color-swatch-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 100ms ease;
+}
+
+.ui-color-swatch-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.ui-color-input-native {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Light Flash Highlight for Sidebar Modes when selected from Hotbar */
+@keyframes sectionHighlightFlash {
+  0% {
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.9), 0 0 20px rgba(99, 102, 241, 0.5);
+    background-color: rgba(99, 102, 241, 0.22);
+    border-color: rgba(165, 180, 252, 0.8) !important;
+  }
+
+  40% {
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.6), 0 0 14px rgba(99, 102, 241, 0.3);
+    background-color: rgba(99, 102, 241, 0.12);
+    border-color: rgba(129, 140, 248, 0.5) !important;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0px transparent, 0 0 0px transparent;
+    background-color: transparent;
+  }
+}
+
+.section-flash {
+  animation: sectionHighlightFlash 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+/* Welcome Modal Photosensitivity Warning Box */
+.welcome-photosensitivity-box {
+  display: block;
+  padding: 6px 9px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.welcome-photosensitivity-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 2.5px;
+}
+
+.welcome-photosensitivity-icon {
+  flex-shrink: 0;
+  color: #818cf8;
+}
+
+.welcome-photosensitivity-title {
+  color: #e4e4e7;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.welcome-photosensitivity-desc {
+  margin: 0;
+  color: #a1a1aa;
+  font-weight: 400;
+  font-size: 10.5px;
+  line-height: 1.38;
+}
+
+/* Welcome Modal Preset Switcher Infinite Flowing Marquee */
+.welcome-marquee-container {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  width: 100%;
+  padding: 3px 0;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.welcome-marquee-container::-webkit-scrollbar {
+  display: none;
+}
+
+.welcome-marquee-container:active,
+.welcome-marquee-container.is-dragging {
+  cursor: grabbing;
+}
+
+.welcome-marquee-track {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  align-items: center;
+  padding-right: 6px;
+  touch-action: pan-y;
+}
+
+.welcome-preset-pill {
+  font-size: 10px;
+  padding: 2px 9px;
+  height: 21px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  flex-shrink: 0;
+}
+
+.welcome-preset-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #f4f4f5;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.welcome-preset-pill.is-active,
+.welcome-preset-pill-active {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(129, 140, 248, 0.55);
+  color: #e0e7ff;
+  font-weight: 500;
+}
+
+/* Minimized Left Sidebar Vertical Title */
+.ui-sidebar-vertical-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-orientation: mixed;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #71717a;
+  user-select: none;
+  white-space: nowrap;
+  transition: color 150ms ease;
+}
+
+.ui-sidebar-minimized-body:hover .ui-sidebar-vertical-title {
+  color: #e4e4e7;
+}
+
+/* ==========================================================================
+   Universal Icon Colors & CSS Icon Customization
+   Allows custom colors and replacement of UI icons directly via CSS rules.
+   ========================================================================== */
+:root {
+  /* UI Global Icon Color Tokens */
+  --icon-color-default: #a1a1aa;
+  --icon-color-primary: #818cf8;
+  --icon-color-indigo: #818cf8;
+  --icon-color-emerald: #34d399;
+  --icon-color-amber: #fbbf24;
+  --icon-color-rose: #fb7185;
+  --icon-color-sky: #38bdf8;
+  --icon-color-purple: #c084fc;
+  --icon-color-fuchsia: #e879f9;
+  --icon-color-warning: #71717a;
+  /* Clean subtle gray warning symbol */
+  --icon-color-danger: #f87171;
+  --icon-color-muted: #71717a;
+
+  /* Simulation Mode & Effect Icon Colors */
+  --icon-color-effect-physics: #818cf8;
+  --icon-color-effect-grayScott: #6ebea1;
+  --icon-color-effect-reactionKinetics: #fb7185;
+  --icon-color-effect-quantumPhase: #d6bcf0;
+  --icon-color-effect-excitable: #f472b6;
+  --icon-color-effect-soca: #fb7185;
+  --icon-color-effect-surfaceTension: #38bdf8;
+  --icon-color-effect-flow: #60a5fa;
+  --icon-color-effect-vortex: #22d3ee;
+  --icon-color-effect-turbulence: #2dd4bf;
+  --icon-color-effect-gravity: #fbbf24;
+  --icon-color-effect-lga: #38bdf8;
+  --icon-color-effect-gol: #a78bfa;
+  --icon-color-effect-fractal: #e879f9;
+  --icon-color-effect-walker: #fb923c;
+  --icon-color-effect-lenia: #818cf8;
+  --icon-color-effect-physarum: #34d399;
+  --icon-color-effect-sharpen: #a3e635;
+}
+
+/* Icon Color Utility Classes */
+.ui-icon {
+  color: var(--icon-color, currentColor);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ui-icon-primary {
+  color: var(--icon-color-primary) !important;
+}
+
+.ui-icon-indigo {
+  color: var(--icon-color-indigo) !important;
+}
+
+.ui-icon-emerald {
+  color: var(--icon-color-emerald) !important;
+}
+
+.ui-icon-amber {
+  color: var(--icon-color-amber) !important;
+}
+
+.ui-icon-warning {
+  color: var(--icon-color-warning) !important;
+}
+
+.ui-icon-danger {
+  color: var(--icon-color-danger) !important;
+}
+
+.ui-icon-muted {
+  color: var(--icon-color-muted) !important;
+}
+
+/* Effect-Specific CSS Icon Selectors */
+.effect-icon-physics {
+  color: var(--icon-color-effect-physics) !important;
+}
+
+.effect-icon-grayScott {
+  color: var(--icon-color-effect-grayScott) !important;
+}
+
+.effect-icon-reactionKinetics {
+  color: var(--icon-color-effect-reactionKinetics) !important;
+}
+
+.effect-icon-quantumPhase {
+  color: var(--icon-color-effect-quantumPhase) !important;
+}
+
+.effect-icon-excitable {
+  color: var(--icon-color-effect-excitable) !important;
+}
+
+.effect-icon-soca {
+  color: var(--icon-color-effect-soca) !important;
+}
+
+.effect-icon-surfaceTension {
+  color: var(--icon-color-effect-surfaceTension) !important;
+}
+
+.effect-icon-flow {
+  color: var(--icon-color-effect-flow) !important;
+}
+
+.effect-icon-vortex {
+  color: var(--icon-color-effect-vortex) !important;
+}
+
+.effect-icon-turbulence {
+  color: var(--icon-color-effect-turbulence) !important;
+}
+
+.effect-icon-gravity {
+  color: var(--icon-color-effect-gravity) !important;
+}
+
+.effect-icon-lga {
+  color: var(--icon-color-effect-lga) !important;
+}
+
+.effect-icon-gol {
+  color: var(--icon-color-effect-gol) !important;
+}
+
+.effect-icon-fractal {
+  color: var(--icon-color-effect-fractal) !important;
+}
+
+.effect-icon-walker {
+  color: var(--icon-color-effect-walker) !important;
+}
+
+.effect-icon-lenia {
+  color: var(--icon-color-effect-lenia) !important;
+}
+
+.effect-icon-physarum {
+  color: var(--icon-color-effect-physarum) !important;
+}
+
+.effect-icon-sharpen {
+  color: var(--icon-color-effect-sharpen) !important;
+}

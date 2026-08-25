@@ -1,0 +1,83 @@
+# ==============================================================================
+# PRODUCTION GRADE .GITIGNORE
+# ==============================================================================
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+.yarn/
+
+# Build & Compilation Artifacts
+dist/
+dist-ssr/
+build/
+out/
+.vite/
+.turbo/
+*.tsbuildinfo
+
+# Environment & Secrets
+.env
+.env.*
+.env.example
+*.env
+*.pem
+*.key
+*.cert
+
+# Firebase & Deployment Configs
+.firebase/
+.firebaserc
+firebase.json
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Docker & Container Configs
+Dockerfile*
+docker-compose*.yml
+docker-compose*.yaml
+.dockerignore
+.devcontainer/
+
+# Logs & Diagnostics
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing & Coverage
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Editor & IDE Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Operating System & Temporary Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+.cache/
+.temp/
+.tmp/
+

@@ -1,0 +1,2988 @@
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/700.css';
+@import './styles.css';
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  /* ==========================================================================
+     GLOBAL TRANSITIONS & ANIMATION TIMINGS
+     ========================================================================== */
+  --transition-fast: 100ms ease;
+  /* Fast micro-interaction duration & easing */
+  --transition-normal: 150ms ease;
+  /* Standard component transition duration & easing */
+  --transition-slow: 200ms ease;
+  /* Smooth layout panel transition duration & easing */
+
+  --transition-btn: background-color 150ms ease, color 150ms ease, border-color 100ms ease, transform 100ms ease;
+  /* Button transition animation */
+  --transition-input: border-color 150ms ease, box-shadow 150ms ease, background-color 100ms ease;
+  /* Input field focus transition animation */
+  --transition-slider-thumb: background-color 150ms ease, transform 150ms ease;
+  /* Slider thumb scale transition animation */
+  --transition-sidebar: 100ms ease;
+  /* Sidebar expand/collapse animation */
+  --transition-section: background-color 100ms ease, color 100ms ease;
+  /* Section header expand/collapse animation */
+  --transition-param: background-color 100ms ease, border-color 100ms ease, box-shadow 100ms ease;
+  /* Parameter control highlight transition */
+
+  /* ==========================================================================
+     GLOBAL THEME & TYPOGRAPHY
+     ========================================================================== */
+  --color-bg-base: #09090b;
+  /* Body background color */
+  --color-text-main: #f4f4f5;
+  /* Main text color */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+
+  /* ==========================================================================
+     CARDS & CONTAINERS (.ui-card)
+     ========================================================================== */
+  --card-bg: rgba(31, 31, 31, 0.95);
+  /* Container background color */
+  --card-text-color: #f4f4f5;
+  /* Container text color */
+  --card-border-color: #cccccb15;
+  /* Container border color */
+  --card-border-width: 1px;
+  /* Container border thickness */
+  --card-border-style: solid;
+  /* Container border style */
+  --card-radius: 3px;
+  /* Container corner radius */
+  --card-padding: 8px;
+  /* Container inner padding */
+  --card-margin: -0px -3px 0px -3px;
+  /* Container outer margin */
+  --card-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  /* ==========================================================================
+     COLLAPSIBLE & TOGGLEABLE SECTIONS (.ui-section)
+     ========================================================================== */
+  --section-margin: 0px 0px 6px 0;
+  /* Outer margin around section */
+  --section-border-color: rgba(0, 0, 0, 0);
+  /* Bottom border color */
+  --section-border-radius: 4px;
+  --section-border-width: 0px;
+  /* Bottom border width */
+
+  --section-header-padding: 2px 8px 3px 8px;
+  /* Section header bar padding */
+  --section-header-bg: rgba(0, 0, 0, 0);
+  /* Section header background */
+  --section-header-hover-bg: rgba(39, 39, 42, 0.5);
+  /* Section header hover background */
+
+  --section-title-color: #ffffffcb;
+  /* Title text color */
+  --section-title-hover-color: #ffffff;
+  /* Title text hover color */
+  --section-title-font-size: 11px;
+  /* Title font size */
+  --section-title-font-weight: 300;
+  /* Title font weight */
+  --section-title-transform: none;
+  /* Title text transform */
+  --section-title-tracking: 0.03em;
+  /* Title letter spacing */
+
+  /* Active & Disabled Mode Section States */
+  --section-disabled-opacity: 0.55;
+  /* Opacity of parameters and content when a mode is disabled/turned off */
+  --section-disabled-bg: rgba(0, 0, 0, 0);
+  /* Header background when mode is disabled */
+  --section-disabled-title-color: #c8c8c890;
+  /* Title text color when mode is disabled */
+  --section-disabled-title-transform: none;
+  /* Title text transform when mode is disabled */
+  --section-active-bg: rgba(0, 0, 0, 0);
+  /* Header background when mode is enabled */
+  --section-active-title-color: #ffffffcb;
+  /* Title text color when mode is enabled */
+  --section-active-title-transform: none;
+  /* Title text transform when mode is enabled */
+
+  --section-icon-color: #71717a;
+  /* Icon color */
+  --section-icon-hover-color: #d4d4d8;
+  /* Icon hover color */
+  --section-content-padding: 0px;
+  /* Expanded body inner padding */
+  --section-content-gap: 8px;
+  /* Gap between child controls inside section */
+  --section-content-margin: 0px;
+  /* Margin around section content */
+
+  /* ==========================================================================
+     LABELS (.ui-label)
+     ========================================================================== */
+  --label-color: #ffffff63;
+  /* Label text color */
+  --label-font-size: 8px;
+  /* Mobile label font size */
+  --label-font-size-sm: 10px;
+  /* Desktop label font size */
+  --label-font-weight: 400;
+  /* Label font weight */
+  --label-transform: uppercase;
+  /* Label text transform */
+  --label-tracking: -0.025em;
+  /* Label letter spacing */
+  --label-margin: 0 0px 2px 3px;
+  /* Label spacing */
+
+  /* ==========================================================================
+     BUTTONS (Base .ui-btn)
+     ========================================================================== */
+  --btn-padding: 0.375rem 0.75rem;
+  /* Default button padding */
+  --btn-radius: 6px;
+  /* Button corner radius */
+  --btn-font-size: 10px;
+  /* Button text size */
+  --btn-font-weight: 300;
+  /* Button font weight */
+  --btn-border-width: 1px;
+  /* Button border thickness */
+  --btn-border-style: solid;
+  /* Button border style */
+  --btn-height: auto;
+  /* Explicit button height */
+  --btn-letter-spacing: 0.03em;
+  /* Button letter spacing */
+  --btn-text-transform: uppercase;
+  /* Button text transform */
+
+  /* Primary Button (.ui-btn-primary) */
+  --btn-primary-bg: #fefeffef;
+  --btn-primary-text: #09090b;
+  --btn-primary-border: #ffffffc8;
+  --btn-primary-hover-bg: #e4e4e7;
+
+  /* Secondary Button (.ui-btn-secondary) */
+  --btn-secondary-bg: #27272a;
+  --btn-secondary-text: #f4f4f5;
+  --btn-secondary-border: #797c90;
+  --btn-secondary-hover-bg: #3f3f46;
+
+  /* Ghost Button (.ui-btn-ghost) - Full Customization Options */
+  --btn-ghost-bg: transparent;
+  /* Ghost button background */
+  --btn-ghost-text: #d4d4d8;
+  /* Ghost button text color */
+  --btn-ghost-border: transparent;
+  /* Ghost button border */
+  --btn-ghost-hover-bg: #27272a;
+  /* Ghost button hover background */
+  --btn-ghost-hover-text: #fafafa;
+  /* Ghost button hover text color */
+  --btn-ghost-font-size: 10px;
+  /* Ghost button font size */
+  --btn-ghost-font-weight: 300;
+  /* Ghost button font weight */
+  --btn-ghost-text-transform: none;
+  /* Ghost button text transform (none, uppercase, capitalize) */
+  --btn-ghost-letter-spacing: 0.03em;
+  /* Ghost button letter spacing */
+  --btn-ghost-padding: 0.25rem 0.5rem;
+  /* Ghost button padding */
+  --btn-ghost-radius: 4px;
+  /* Ghost button corner radius */
+
+  /* Outline Button (.ui-btn-outline) */
+  --btn-outline-bg: transparent;
+  --btn-outline-border: #27272a;
+  --btn-outline-text: #f4f4f5;
+  --btn-outline-hover-bg: #27272a;
+
+  /* Destructive Button (.ui-btn-destructive) */
+  --btn-destructive-bg: rgba(127, 29, 29, 0.3);
+  --btn-destructive-text: #f87171;
+  --btn-destructive-border: rgba(127, 29, 29, 0.5);
+  --btn-destructive-hover-bg: rgba(127, 29, 29, 0.5);
+
+  /* ==========================================================================
+     INPUTS & SELECT DROPDOWNS (.ui-input)
+     ========================================================================== */
+  --input-bg: #0000006f;
+  /* Input background color */
+  --input-text-color: #f4f4f5;
+  /* Input text color */
+  --input-placeholder-color: #52525b;
+  /* Placeholder color */
+  --input-border-color: #27272a;
+  /* Input border color */
+  --input-border-width: 1px;
+  /* Input border width */
+  --input-border-style: solid;
+  /* Input border style */
+  --input-radius: 8px;
+  /* Input corner radius */
+  --input-padding: 1px 0.4rem;
+  /* Input inner padding */
+  --input-font-size: 10px;
+  /* Input font size */
+  --input-height: 20px;
+  /* Input & Select height */
+  --input-focus-ring: #3f3f46;
+  /* Focus outline ring */
+  --input-focus-border: #ffffff87;
+  /* Focus border color */
+
+  /* ==========================================================================
+     RANGE SLIDERS & SLIDER CIRCLE (THUMB) (.ui-slider)
+     ========================================================================== */
+  --slider-track-bg: #464646;
+  /* Track background color */
+  --slider-track-height: 5px;
+  /* Track height */
+  --slider-track-radius: 5px;
+  /* Track corner radius */
+  --slider-track-border-width: 1px;
+  /* Track border width */
+  --slider-track-border-color: #f8f1f11b;
+  /* Track border color */
+
+  /* SLIDER CIRCLE (THUMB) PARAMETERS */
+  --slider-thumb-size: 14px;
+  /* Thumb circle diameter (width & height) */
+  --slider-thumb-bg: #f4f4f5;
+  /* Thumb circle background color */
+  --slider-thumb-radius: 9999px;
+  /* Thumb circle radius (9999px = perfect circle) */
+  --slider-thumb-border-width: 1px;
+  /* Thumb circle border width */
+  --slider-thumb-border-color: #ffffff;
+  /* Thumb circle border color */
+  --slider-thumb-shadow: 0 0px 3px rgba(0, 0, 0, 0.4);
+  /* Thumb circle shadow */
+  --slider-thumb-hover-bg: #ffffff;
+  /* Thumb circle hover background color */
+  --slider-thumb-hover-scale: 1.18;
+  /* Thumb circle hover scale factor */
+
+  /* ==========================================================================
+     PARAMETER CONTROL CONTAINERS (.ui-param-control)
+     ========================================================================== */
+  --param-padding: 0px 0px;
+  /* Container inner padding around title, input & slider */
+  --param-margin: 0 0 4px 0;
+  /* Outer margin between stacked parameter control cards */
+  --param-gap: 0px;
+  /* VERTICAL GAP between the Parameter Title/Input row and the Slider track */
+  --param-title-input-gap: 4px;
+  /* HORIZONTAL GAP between the Parameter Title text and the Number Input field */
+  --param-header-margin-bottom: -8px;
+  /* Extra vertical spacing below the Title/Input header row */
+
+  --param-bg: transparent;
+  /* Container background */
+  --param-radius: 4px;
+  /* Container corner radius */
+  --param-border-color: transparent;
+  /* Container border color */
+  --param-border-width: 1px;
+  /* Container border width */
+
+  --param-title-font-size: 11px;
+  /* Parameter title font size */
+  --param-title-font-weight: 400;
+  /* Parameter title font weight */
+  --param-title-color: #c0c0c9ab;
+  /* Parameter title color */
+
+  /* PARAMETER INPUT FIELD (.ui-param-input) */
+  --param-input-width: 100%;
+  /* Default width of parameter text/number input field */
+  --param-input-min-width: 36px;
+  /* Minimum allowed width of parameter input field */
+  --param-input-max-width: 60px;
+  /* Maximum allowed width of parameter input field */
+  --param-input-height: 20px;
+  /* Height of parameter number input field */
+  --param-input-bg: #09090b;
+  /* Parameter input background color */
+  --param-input-color: #f4f4f5;
+  /* Parameter input text color */
+  --param-input-border-color: #27272a;
+  /* Parameter input border color */
+  --param-input-radius: 4px;
+  /* Parameter input corner radius */
+
+  /* ==========================================================================
+     TOGGLE SWITCHES (.ui-switch)
+     ========================================================================== */
+  --switch-width: 1.5rem;
+  /* Switch container width */
+  --switch-height: 0.8rem;
+  /* Switch container height */
+  --switch-radius: 3px;
+  /* Switch container radius */
+  --switch-border-width: 1px;
+  /* Switch border width */
+  --switch-border-color: transparent;
+  /* Switch border color */
+  --switch-off-bg: #575757;
+  /* OFF state background color */
+  --switch-on-bg: #98ffa4b8;
+  /* ON state background color */
+
+  --switch-thumb-size: 0.55rem;
+  /* Switch knob circle diameter */
+  --switch-thumb-color: #ffffff;
+  /* Switch knob circle color */
+  --switch-thumb-radius: 3px;
+  /* Switch knob circle radius */
+  --switch-thumb-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  /* Switch knob shadow */
+
+  /* ==========================================================================
+     CONTEXT MENU (.ui-ctx-menu)
+     ========================================================================== */
+  --ctx-menu-bg: #18181b;
+  /* Menu background color */
+  --ctx-menu-border: #3f3f46;
+  /* Menu border color */
+  --ctx-menu-radius: 4px;
+  /* Menu corner radius */
+  --ctx-menu-padding: 4px;
+  /* Menu inner padding */
+  --ctx-menu-text: #d4d4d8;
+  /* Item text color */
+  --ctx-menu-hover-bg: #27272a;
+  /* Item hover background */
+
+  /* ==========================================================================
+     SIDEBARS (.ui-sidebar)
+     ========================================================================== */
+  --sidebar-bg: rgba(19, 19, 19, 0.867);
+  /* Sidebar background color */
+  --sidebar-border-color: #45454595;
+  /* Sidebar border color */
+  --sidebar-border-width: 1px;
+  /* Sidebar border width */
+  --sidebar-padding: 0.2rem;
+  /* Inner content padding */
+
+  /* Sidebar Resizing & Limit Options */
+  --sidebar-height: 100%;
+  /* Sidebar height */
+  --sidebar-min-height: 200px;
+  /* Sidebar minimum height limit */
+  --sidebar-max-height: 100vh;
+  /* Sidebar maximum height limit */
+  --sidebar-min-width: 240px;
+  /* Sidebar minimum width limit */
+  --sidebar-max-width: 600px;
+  /* Sidebar maximum width limit */
+
+  /* Sidebar Drag Edge Resizer Highlight Options */
+  --sidebar-resizer-width: 6px;
+  /* Sidebar resizer handle width */
+  --sidebar-resizer-bg: transparent;
+  /* Sidebar resizer idle background */
+  --sidebar-resizer-hover-bg: rgba(109, 154, 204, 0.608);
+  /* Sidebar resizer hover highlight color */
+  --sidebar-resizer-active-bg: rgba(101, 180, 236, 0.75);
+  /* Sidebar resizer dragging/active highlight color */
+
+  --sidebar-header-height: 3rem;
+  /* Sidebar header bar height */
+  --sidebar-header-padding: 0.25rem 0.8rem;
+  /* Sidebar header padding */
+  --sidebar-header-bg: transparent;
+  /* Sidebar header background */
+  --sidebar-header-hover-bg: #27272a;
+  /* Sidebar header hover background */
+
+  --sidebar-title-font-size: 11px;
+  /* Sidebar title text size */
+  --sidebar-title-font-weight: 400;
+  /* Sidebar title font weight */
+  --sidebar-title-transform: None;
+  /* Sidebar title text transform */
+  --sidebar-title-tracking: 0.1em;
+  /* Sidebar title letter spacing */
+  --sidebar-title-color: #a1a1aa;
+  /* Sidebar title color */
+
+  /* Closed Sidebar Header Options (PC & Tablet) */
+  --sidebar-closed-header-bg: transparent;
+  /* Closed sidebar header button background */
+  --sidebar-closed-header-hover-bg: #27272a;
+  /* Closed sidebar header button hover background */
+  --sidebar-closed-header-border-color: #45454595;
+  /* Closed sidebar header button border color */
+  --sidebar-closed-header-border-width: 0px 0px 1px 0px;
+  /* Closed sidebar header button border thickness */
+  --sidebar-closed-header-border-style: solid;
+  /* Closed sidebar header button border style */
+  --sidebar-closed-header-radius: 0px;
+  /* Closed sidebar header button corner radius */
+  --sidebar-closed-header-width: 100%;
+  /* Closed sidebar header button width */
+  --sidebar-closed-header-height: 3rem;
+  /* Closed sidebar header button height */
+  --sidebar-closed-header-margin: 0;
+  /* Closed sidebar header button margin */
+  --sidebar-closed-header-padding: 0.25rem;
+  /* Closed sidebar header button padding */
+  --sidebar-closed-header-shadow: none;
+  /* Closed sidebar header button drop shadow */
+  --sidebar-closed-icon-size: 16px;
+  /* Closed sidebar chevron icon size */
+  --sidebar-closed-icon-color: #a1a1aa;
+  /* Closed sidebar chevron icon color */
+  --sidebar-closed-icon-hover-color: #ffffff;
+  /* Closed sidebar chevron icon hover color */
+  --sidebar-minimized-icon-size: 16px;
+  /* Minimized body icon size (Settings/Activity) */
+  --sidebar-minimized-icon-color: #71717a;
+  /* Minimized body icon color */
+
+  /* ==========================================================================
+     CLOSED SIDEBAR HEADER OPTIONS (MOBILE PHONE VIEW)
+     Customize the closed sidebar header specifically for mobile phones here!
+     ========================================================================== */
+  --sidebar-closed-width-mobile: 44px;
+  /* Mobile closed sidebar track width */
+  --sidebar-closed-bg-mobile: transparent;
+  /* Mobile closed sidebar track background */
+  --sidebar-closed-border-color-mobile: transparent;
+  /* Mobile closed sidebar track border color */
+  --sidebar-closed-border-width-mobile: 0px;
+  /* Mobile closed sidebar track border thickness */
+  --sidebar-closed-backdrop-filter-mobile: none;
+  /* Mobile closed sidebar outer track backdrop blur (e.g. none, blur(0px)) */
+  --sidebar-closed-lower-backdrop-filter-mobile: none;
+  /* Mobile closed sidebar lower body backdrop blur (e.g. none, blur(0px)) */
+  --sidebar-closed-header-bg-mobile: transparent;
+  /* Mobile closed header button background */
+  --sidebar-closed-header-hover-bg-mobile: #27272a;
+  /* Mobile closed header button hover background */
+  --sidebar-closed-header-border-color-mobile: #45454595;
+  /* Mobile closed header button border color */
+  --sidebar-closed-header-border-width-mobile: 0px 0px 0px 0px;
+  /* Mobile closed header button border thickness */
+  --sidebar-closed-header-border-style-mobile: solid;
+  /* Mobile closed header button border style */
+  --sidebar-closed-header-radius-mobile: 0px;
+  /* Mobile closed header button corner radius */
+  --sidebar-closed-header-width-mobile: 100%;
+  /* Mobile closed header button width */
+  --sidebar-closed-header-height-mobile: 3rem;
+  /* Mobile closed header button height */
+  --sidebar-closed-header-margin-mobile: 0px;
+  /* Mobile closed header button margin (top right bottom left) */
+  --sidebar-closed-header-padding-mobile: 0px;
+  /* Mobile closed header button inner padding */
+  --sidebar-closed-header-shadow-mobile: none;
+  /* Mobile closed header button drop shadow */
+  --sidebar-closed-icon-size-mobile: 16px;
+  /* Mobile closed header chevron icon size */
+  --sidebar-closed-icon-color-mobile: #a1a1aa;
+  /* Mobile closed header chevron icon color */
+  --sidebar-closed-icon-hover-color-mobile: #ffffff;
+  /* Mobile closed header chevron icon hover color */
+
+  /* ==========================================================================
+     OPEN SIDEBAR MOBILE OPTIONS
+     Customize the open sidebar appearance specifically for mobile phones!
+     ========================================================================== */
+  --sidebar-bg-mobile: rgba(18, 18, 20, 0.98);
+  /* Mobile open sidebar background color */
+  --sidebar-border-color-mobile: #45454595;
+  /* Mobile open sidebar border color */
+  --sidebar-border-width-mobile: 1px;
+  /* Mobile open sidebar border thickness */
+  --sidebar-width-mobile: min(340px, 88vw);
+  /* Mobile open sidebar width */
+  --sidebar-min-width-mobile: 180px;
+  /* Mobile open sidebar min width */
+  --sidebar-max-width-mobile: 94vw;
+  /* Mobile open sidebar max width */
+  --sidebar-height-mobile: 100%;
+  /* Mobile open sidebar height */
+  --sidebar-padding-mobile: 0.0rem;
+  /* Mobile open sidebar inner content padding */
+  --sidebar-header-height-mobile: 3rem;
+  /* Mobile open sidebar header height */
+  --sidebar-header-padding-mobile: 0.25rem 0.8rem;
+  /* Mobile open sidebar header padding */
+  --sidebar-title-font-size-mobile: 11px;
+  /* Mobile open sidebar title font size */
+  --sidebar-title-font-weight-mobile: 400;
+  /* Mobile open sidebar title font weight */
+
+  /* ==========================================================================
+     MOBILE SECTIONS & PARAMETERS OPTIONS
+     ========================================================================== */
+  --sidebar-section-margin-mobile: 0px 0px 2px 0;
+  /* Mobile section margin */
+  --sidebar-section-header-padding-mobile: 3px 8px 3px 8px;
+  /* Mobile section header padding */
+  --sidebar-section-title-size-mobile: 11px;
+  /* Mobile section title size */
+  --sidebar-section-title-weight-mobile: 300;
+  /* Mobile section title weight */
+  --sidebar-section-content-padding-mobile: 2px;
+  /* Mobile section body content padding */
+  --sidebar-section-content-gap-mobile: 8px;
+  /* Mobile section controls gap */
+
+  --topbar-height-mobile: 3rem;
+  /* Mobile top bar height */
+  --topbar-padding-mobile: 0.25rem 0.5rem;
+  /* Mobile top bar padding */
+  --topbar-bg-mobile: rgba(19, 19, 19, 0.92);
+  /* Mobile top bar background */
+  --topbar-left-margin-mobile: var(--sidebar-closed-width-mobile, 44px);
+  /* Mobile top bar left offset (positions hamburger menu right where topbar starts after closed sidebar) */
+  --topbar-right-margin-mobile: var(--sidebar-closed-width-mobile, 44px);
+  /* Mobile top bar right offset (positions right edge controls before closed right sidebar) */
+  --topbar-btn-font-size-mobile: 11px;
+  /* Mobile top bar button font size */
+  --topbar-btn-font-weight-mobile: 300;
+  /* Mobile top bar button font weight */
+  --topbar-btn-text-transform-mobile: none;
+  /* Mobile top bar button text transform */
+  --topbar-btn-padding-mobile: 0.25rem 0.5rem;
+  /* Mobile top bar button padding */
+
+  --param-padding-mobile: 0.25rem;
+  /* Mobile parameter padding */
+  --param-gap-mobile: 0.25rem;
+  /* Mobile parameter gap */
+  --param-title-font-size-mobile: 10px;
+  /* Mobile parameter title font size */
+  --param-input-width-mobile: 52px;
+  /* Mobile parameter input width */
+  --param-input-height-mobile: 18px;
+  /* Mobile parameter input height */
+  --param-input-font-size-mobile: 10px;
+  /* Mobile parameter input font size */
+
+  /* ==========================================================================
+     TOP BAR (.ui-topbar)
+     ========================================================================== */
+  --topbar-bg: rgba(19, 19, 19, 0.964);
+  /* Top bar background color */
+  --topbar-border-color: #45454595;
+  /* Top bar bottom border color */
+  --topbar-border-width: 1px;
+  /* Top bar border thickness */
+  --topbar-height: 3rem;
+  /* Top bar height */
+  --topbar-padding: 0.25rem 1rem;
+  /* Top bar horizontal padding */
+  --topbar-text-color: #f4f4f5;
+  /* Top bar main text color */
+  --topbar-backdrop-filter: blur(4px);
+  /* Top bar glassmorphism backdrop blur */
+
+  /* Top Bar Action Buttons */
+  --topbar-btn-bg: transparent;
+  /* Top bar button background */
+  --topbar-btn-text: #a1a1aa;
+  /* Top bar button text color */
+  --topbar-btn-border: transparent;
+  /* Top bar button border */
+  --topbar-btn-hover-bg: #27272a;
+  /* Top bar button hover background */
+  --topbar-btn-hover-text: #ffffff;
+  /* Top bar button hover text color */
+  --topbar-btn-font-size: 11px;
+  /* Top bar button font size */
+  --topbar-btn-font-weight: 300;
+  /* Top bar button font weight */
+  --topbar-btn-text-transform: none;
+  /* Top bar button text transform (none, uppercase, capitalize) */
+  --topbar-btn-letter-spacing: 0.03em;
+  /* Top bar button letter spacing */
+  --topbar-btn-padding: 0.25rem 0.5rem;
+  /* Top bar button padding */
+  --topbar-btn-radius: 4px;
+  /* Top bar button corner radius */
+
+  /* Mobile Hamburger Menu & Dropdown (.ui-hamburger-btn, .ui-mobile-menu) */
+  --hamburger-btn-bg: transparent;
+  /* Hamburger button background */
+  --hamburger-btn-hover-bg: #27272a;
+  /* Hamburger button hover background */
+  --hamburger-btn-border: transparent;
+  /* Hamburger button border */
+  --hamburger-btn-radius: 4px;
+  /* Hamburger button corner radius */
+  --hamburger-btn-padding: 0.25rem;
+  /* Hamburger button padding */
+  --hamburger-btn-width: 32px;
+  /* Hamburger button width */
+  --hamburger-btn-height: 32px;
+  /* Hamburger button height */
+  --hamburger-icon-size: 18px;
+  /* Hamburger icon size */
+  --hamburger-icon-color: #a1a1aa;
+  /* Hamburger icon color */
+  --hamburger-icon-hover-color: #ffffff;
+  /* Hamburger icon hover color */
+
+  --mobile-menu-bg: rgba(24, 24, 27, 0.98);
+  /* Mobile dropdown menu background */
+  --mobile-menu-border-color: #3f3f46;
+  /* Mobile dropdown border color */
+  --mobile-menu-border-width: 1px;
+  /* Mobile dropdown border thickness */
+  --mobile-menu-radius: 6px;
+  /* Mobile dropdown corner radius */
+  --mobile-menu-padding: 8px;
+  /* Mobile dropdown inner padding */
+  --mobile-menu-width: 240px;
+  /* Mobile dropdown width */
+  --mobile-menu-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  /* Mobile dropdown shadow */
+  --mobile-menu-backdrop-filter: blur(4px);
+  /* Mobile dropdown blur */
+
+  --mobile-menu-item-bg: transparent;
+  /* Mobile menu item background */
+  --mobile-menu-item-hover-bg: #27272a;
+  /* Mobile menu item hover background */
+  --mobile-menu-item-text-color: #d4d4d8;
+  /* Mobile menu item text color */
+  --mobile-menu-item-font-size: 11px;
+  /* Mobile menu item font size */
+  --mobile-menu-item-font-weight: 400;
+  /* Mobile menu item font weight */
+  --mobile-menu-item-padding: 6px 8px;
+  /* Mobile menu item padding */
+  --mobile-menu-item-radius: 4px;
+  /* Mobile menu item corner radius */
+
+  --mobile-menu-sub-bg: rgba(9, 9, 11, 0.6);
+  /* Submenu container background */
+  --mobile-menu-sub-padding: 4px 8px;
+  /* Submenu container padding */
+  --mobile-menu-sub-radius: 4px;
+  /* Submenu container corner radius */
+  --mobile-menu-sub-item-font-size: 10px;
+  /* Submenu item font size */
+  --mobile-menu-divider-color: #27272a;
+  /* Submenu divider color */
+
+  /* ==========================================================================
+     TOPBAR & HEADER DROPDOWN MENUS (File, Presets, View) (.ui-topbar-dropdown)
+     ========================================================================== */
+  --topbar-dropdown-bg: #18181b;
+  /* Dropdown menu background color (solid dark) */
+  --topbar-dropdown-border-color: #3f3f46;
+  /* Dropdown menu border color */
+  --topbar-dropdown-border-width: 1px;
+  /* Dropdown menu border width */
+  --topbar-dropdown-border-style: solid;
+  /* Dropdown menu border style */
+  --topbar-dropdown-radius: 4px;
+  /* Dropdown menu corner radius */
+  --topbar-dropdown-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  /* Dropdown menu drop shadow */
+  --topbar-dropdown-padding: 4px;
+  /* Dropdown menu inner padding */
+  --topbar-dropdown-divider-color: #27272a;
+  /* Dropdown menu divider line color */
+
+  --topbar-dropdown-header-color: #71717a;
+  /* Dropdown section heading text color */
+  --topbar-dropdown-header-font-size: 9px;
+  /* Dropdown section heading font size */
+  --topbar-dropdown-header-font-weight: 700;
+  /* Dropdown section heading font weight */
+  --topbar-dropdown-header-padding: 4px 8px;
+  /* Dropdown section heading padding */
+
+  --topbar-dropdown-item-color: #d4d4d8;
+  /* Dropdown item text color */
+  --topbar-dropdown-item-hover-color: #ffffff;
+  /* Dropdown item hover text color */
+  --topbar-dropdown-item-hover-bg: #27272a;
+  /* Dropdown item hover background color */
+  --topbar-dropdown-item-font-size: 10px;
+  /* Dropdown item font size */
+  --topbar-dropdown-item-padding: 6px 8px;
+  /* Dropdown item padding */
+  --topbar-dropdown-item-radius: 3px;
+  /* Dropdown item corner radius */
+
+  /* ==========================================================================
+     BRUSH TOOLBAR (.ui-brush-bar) & ZOOM CONTROLS (.ui-zoom-bar)
+     ========================================================================== */
+  --brush-bar-bg: rgba(24, 24, 27, 0.95);
+  /* Brush bar background color */
+  --brush-bar-border-color: #3f3f46;
+  /* Brush bar border color */
+  --brush-bar-border-width: 1px;
+  /* Brush bar border thickness */
+  --brush-bar-radius: 8px;
+  /* Brush bar corner radius */
+  --brush-bar-padding: 0.75rem;
+  /* Brush bar inner padding */
+  --brush-bar-padding-mobile: 10px 12px;
+  /* Mobile brush bar inner padding (top/bottom left/right) */
+  --brush-bar-width-mobile: 250px;
+  /* Mobile brush bar container width (centered between 44px sidebars) */
+  --brush-bar-bottom-mobile: 70px;
+  /* Mobile brush bar vertical elevation from bottom */
+  --brush-bar-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Brush bar shadow */
+  --brush-bar-backdrop-filter: blur(4px);
+  /* Brush bar glassmorphism blur */
+
+  --zoom-bar-bg: rgba(24, 24, 27, 0.95);
+  /* Zoom bar background color */
+  --zoom-bar-border-color: #27272a;
+  /* Zoom bar border color */
+  --zoom-bar-border-width: 1px;
+  /* Zoom bar border thickness */
+  --zoom-bar-radius: 5px;
+  /* Zoom bar corner radius */
+  --zoom-bar-padding: 0.5rem;
+  /* Zoom bar inner padding */
+  --zoom-bar-padding-mobile: 6px 8px;
+  /* Mobile zoom bar inner padding */
+  --zoom-bar-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  /* Zoom bar shadow */
+  --zoom-bar-backdrop-filter: blur(4px);
+  /* Zoom bar glassmorphism blur */
+
+  /* ==========================================================================
+     QUICK MODE HOTBAR (.ui-quick-access / .ui-hotbar)
+     ========================================================================== */
+  /* Positioning & Offsets */
+  --hotbar-left-gap: 16px;
+  /* Space/gap between sidebar and the mode hotbar when sidebar is closed/open */
+  --hotbar-top: 3.75rem;
+  /* Distance from top of the screen */
+  --hotbar-gap: 4px;
+  /* Vertical gap between hotbar mode item buttons */
+
+  /* Collapsed Item Pill Styling (.ui-hotbar-item) */
+  --hotbar-item-bg: rgba(14, 14, 14, 0.622);
+  /* Item background color */
+  --hotbar-item-border-color: #e5e5e631;
+  /* Item border color */
+  --hotbar-item-border-width: 1px;
+  /* Item border width */
+  --hotbar-item-radius: 6px;
+  /* Item corner radius */
+  --hotbar-item-height: 32px;
+  /* Item button height */
+  --hotbar-item-padding: 0 6px;
+  /* Item horizontal padding */
+  --hotbar-item-shadow: 0 0px 2px rgba(0, 0, 0, 0.253);
+  /* Item drop shadow */
+  --hotbar-item-backdrop-filter: blur(4px);
+  /* Glassmorphism backdrop blur */
+
+  /* Hover State */
+  --hotbar-item-hover-bg: rgba(39, 39, 42, 0.95);
+  /* Item hover background */
+  --hotbar-item-hover-border: #e9e9e92b;
+  /* Item hover border color */
+
+  /* Active / Enabled Mode State */
+  --hotbar-item-active-bg: rgba(28, 28, 28, 0.903);
+  /* Active mode item background */
+  --hotbar-item-active-border: rgba(150, 176, 200, 0.347);
+  /* Active mode item border */
+
+  /* Expanded Floating Panel Styling (.ui-hotbar-panel) */
+  --hotbar-panel-width: 288px;
+  /* Expanded floating popup menu width */
+  --hotbar-panel-bg: rgba(24, 24, 27, 0.98);
+  /* Expanded panel background */
+  --hotbar-panel-border-color: #3f3f46;
+  /* Expanded panel border */
+  --hotbar-panel-radius: 6px;
+  /* Expanded panel corner radius */
+  --hotbar-panel-padding: 8px;
+  /* Expanded panel body padding */
+  --hotbar-panel-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  /* Expanded panel shadow */
+
+  /* Hotbar Header Typography & Icons */
+  --hotbar-label-color: #d4d4d8;
+  /* Expanded title text color */
+  --hotbar-label-font-size: 10px;
+  /* Expanded title font size */
+  --hotbar-label-font-weight: 400;
+  /* Expanded title font weight */
+  --hotbar-chevron-color: #71717a;
+  /* Expand/collapse chevron color */
+  --hotbar-chevron-hover-color: #e4e4e7;
+  /* Chevron hover color */
+  --hotbar-sidebar-open-opacity: 0.4;
+  /* Opacity of mode hotbar when left sidebar is open */
+
+  /* ==========================================================================
+     AUTOMATION DEVICES & MODULES (.ui-device / .ui-module / .ui-scope)
+     ========================================================================== */
+  --device-bg: rgba(24, 24, 27, 0.85);
+  /* Device card background color */
+  --device-border-color: #27272a;
+  /* Device card border color */
+  --device-border-width: 1px;
+  /* Device card border thickness */
+  --device-radius: 4px;
+  /* Device card corner radius */
+  --device-padding: 0.5rem;
+  /* Device card inner padding */
+  --device-margin: 0 0 0.5rem 0;
+  /* Device card outer margin */
+  --device-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  /* Device card shadow */
+
+  /* Device Header Bar */
+  --device-header-bg: rgba(39, 39, 42, 0.6);
+  /* Device header background */
+  --device-header-hover-bg: rgba(63, 63, 70, 0.6);
+  /* Device header hover background */
+  --device-header-height: 2rem;
+  /* Device header height */
+  --device-header-padding: 0 0.5rem;
+  /* Device header padding */
+  --device-header-border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  /* Device header bottom border */
+
+  /* Device Typography & Indicators */
+  --device-title-color: #f4f4f5;
+  /* Device title text color */
+  --device-title-font-size: 10px;
+  /* Device title text size */
+  --device-title-font-weight: 700;
+  /* Device title font weight */
+  --device-title-transform: uppercase;
+  /* Device title text transform */
+  --device-title-tracking: 0.05em;
+  /* Device title letter spacing */
+  --device-dot-size: 8px;
+  /* Device status indicator dot size */
+
+  /* Device Scope / Visualizer */
+  --device-scope-bg: #09090b;
+  /* Visualizer scope canvas background */
+  --device-scope-border: #27272a;
+  /* Visualizer scope border */
+  --device-scope-height: 48px;
+  /* Visualizer scope height */
+  --device-scope-radius: 3px;
+  /* Visualizer scope corner radius */
+
+  /* Add Device Container */
+  --device-add-bg: transparent;
+  /* Add device container background */
+  --device-add-border-color: #27272a;
+  /* Add device dashed border color */
+  --device-add-hover-bg: rgba(39, 39, 42, 0.2);
+  /* Add device hover background */
+  --device-add-hover-border: #3f3f46;
+  /* Add device hover border color */
+
+  /* ==========================================================================
+     MODALS (.ui-modal)
+     ========================================================================== */
+  /* Modal Overlay Backdrop (.ui-modal-overlay) */
+  --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+  /* Backdrop overlay background / opacity */
+  --modal-overlay-backdrop-filter: blur(4px);
+  /* Backdrop blur glassmorphism effect */
+  --modal-overlay-padding: 1rem;
+  /* Screen edge padding around modal */
+
+  /* Modal Card / Window (.ui-modal) */
+  --modal-bg: #18181af0;
+  /* Modal card background color */
+  --modal-text-color: #f4f4f5;
+  /* Modal default body text color */
+  --modal-border-color: #3f3f46;
+  /* Modal border color */
+  --modal-border-width: 1px;
+  /* Modal border thickness */
+  --modal-border-style: solid;
+  /* Modal border style */
+  --modal-radius: 6px;
+  /* Modal corner radius */
+  --modal-padding: 0.2rem;
+  /* Modal inner padding */
+  --modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  /* Modal drop shadow */
+  --modal-backdrop-filter: blur(4px);
+  /* Modal card glassmorphism blur */
+  --modal-max-height: 90vh;
+  /* Maximum allowed height for modal dialogs */
+
+  /* Modal Header Bar (.ui-modal-header) */
+  --modal-header-bg: transparent;
+  /* Header bar background color */
+  --modal-header-padding: 0.5rem 0.75rem;
+  /* Header bar padding */
+  --modal-header-border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  /* Header bottom border line */
+  --modal-header-margin-bottom: 0.5rem;
+  /* Space below the header bar */
+
+  /* Modal Title Typography (.ui-modal-title) */
+  --modal-title-color: #e6e6ea;
+  /* Title text color */
+  --modal-title-font-size: 11px;
+  /* Title font size */
+  --modal-title-font-weight: 400;
+  /* Title font weight (100-900, bold, normal) */
+  --modal-title-transform: uppercase;
+  /* Title text transform (none, uppercase, capitalize, lowercase) */
+  --modal-title-tracking: 0.05em;
+  /* Title letter spacing */
+  --modal-title-line-height: 1.2;
+  /* Title line height */
+  --modal-title-icon-color: #d1d2c2;
+  /* Title icon color */
+
+  /* Modal Close Button (.ui-modal-close) */
+  --modal-close-color: #71717a;
+  /* Close 'X' icon color */
+  --modal-close-hover-color: #ffffff;
+  /* Close 'X' icon hover color */
+  --modal-close-bg: transparent;
+  /* Close button background */
+  --modal-close-hover-bg: rgba(255, 255, 255, 0.1);
+  /* Close button hover background */
+  --modal-close-padding: 4px;
+  /* Close button inner padding */
+  --modal-close-radius: 4px;
+  /* Close button corner radius */
+
+  /* Modal Body & Content (.ui-modal-body) */
+  --modal-body-padding: 0.65rem 0.75rem;
+  /* Body content padding */
+  --modal-body-gap: 0.75rem;
+  /* Vertical gap between items in modal body */
+  --modal-body-text-color: #a1a1aa;
+  /* Secondary text color in modal */
+  --modal-body-font-size: 10px;
+  /* Body font size */
+
+  /* Modal Footer (.ui-modal-footer) */
+  --modal-footer-bg: transparent;
+  /* Footer bar background */
+  --modal-footer-padding: 0.5rem 0.75rem;
+  /* Footer padding */
+  --modal-footer-border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Footer top border line */
+  --modal-footer-gap: 0.5rem;
+  /* Spacing between action buttons in footer */
+
+  /* ==========================================================================
+     GLOBAL ICON STYLING & COLORING TOKENS
+     ========================================================================== */
+  --icon-color-default: #a1a1aa;
+  /* Base default icon color across UI */
+  --icon-color-hover: #ffffff;
+  /* Base icon color on hover */
+  --icon-color-active: #b6d5dd;
+  /* Icon color when active / selected */
+  --icon-color-highlight: #d1d2c2;
+  /* Highlighted icon color */
+
+  --icon-color-sidebar: #a1a19cf4;
+  /* Sidebar header & panel icon color */
+  --icon-color-hotbar: #c0c2b6;
+  /* Mode Hotbar (QuickAccessBar) icon color */
+  --icon-color-hotbar-active: #f0e4e4;
+  /* Mode Hotbar active mode icon color */
+  --icon-color-toolbar: #777874;
+  /* Brush/Zoom toolbar button icon color */
+  --icon-color-toolbar-active: #686869f1;
+  /* Brush/Zoom toolbar active button icon color */
+  --icon-color-section: #dfe0eb;
+  /* Section header icon color */
+
+  /* Icon Sizing Tokens */
+  --sidebar-header-icon-size: 11px;
+  /* Sidebar header Settings/Automation icon size */
+  --sidebar-toggle-icon-size: 16px;
+  /* Sidebar open/close Chevron icon size */
+  --sidebar-minimized-icon-size: 16px;
+  /* Sidebar minimized state icon size */
+  --sidebar-section-icon-size: 11px;
+  /* Sidebar section header icon size */
+  --sidebar-chevron-size: 11px;
+  /* Sidebar section accordion chevron size */
+  --hotbar-icon-size: 12px;
+  /* Quick mode hotbar mode icon size */
+  --hotbar-chevron-size: 11px;
+  /* Quick mode hotbar chevron size */
+
+  /* ==========================================================================
+     SEED MENUS & SEED MODALS TOKENS
+     ========================================================================== */
+  --seed-menu-bg: rgba(111, 103, 86, 0);
+  /* Initial & Continuous seed menu background */
+  --seed-menu-border-color: #27272a;
+  /* Seed menu border color */
+  --seed-menu-border-width: 0px;
+  /* Seed menu border width */
+  --seed-menu-radius: 3px;
+  /* Seed menu corner radius */
+  --seed-menu-padding: 0.1rem;
+  /* Seed menu inner padding */
+  --seed-menu-margin: -6px 3px 2px 3px;
+  /* Seed menu outer margin */
+
+  --seed-type-btn-bg: #27272a;
+  /* Seed type selector button background */
+  --seed-type-btn-border-color: #3f3f46;
+  /* Seed type selector button border */
+  --seed-type-btn-text-color: #a1a1aa;
+  /* Seed type selector text color */
+  --seed-type-btn-icon-color: #aaaaaa;
+  /* Seed type selector icon color */
+  --seed-type-btn-radius: 4px;
+  /* Seed type selector corner radius */
+  --seed-type-btn-padding: 0.375rem;
+  /* Seed type selector inner padding */
+
+  --seed-type-btn-hover-bg: #3f3f46;
+  /* Seed type selector hover background */
+  --seed-type-btn-hover-border: #52525b;
+  /* Seed type selector hover border */
+  --seed-type-btn-hover-text: #ffffff;
+  /* Seed type selector hover text */
+
+  --seed-type-btn-active-bg: #809c83;
+  /* Seed type selector active/selected background */
+  --seed-type-btn-active-border: #ffffff;
+  /* Seed type selector active/selected border */
+  --seed-type-btn-active-text: #ffffffdf;
+  /* Seed type selector active/selected text */
+  --seed-type-btn-active-icon: #ffffffd9;
+  /* Seed type selector active/selected icon */
+
+  --seed-item-bg: rgba(39, 39, 42, 0.636);
+  /* Seed list item card background */
+  --seed-item-border-color: #3f3f46;
+  /* Seed list item card border */
+  --seed-item-border-width: 1px;
+  /* Seed list item card border width */
+  --seed-item-radius: 4px;
+  /* Seed list item card corner radius */
+  --seed-item-padding: 00rem;
+  /* Seed list item inner padding */
+  --seed-item-margin-bottom: 0.2rem;
+  /* Seed list item bottom margin */
+  --seed-item-title-color: #f4f4f5de;
+  /* Seed list item title color */
+  --seed-item-icon-color: #fefefe;
+  /* Seed list item icon color */
+  --seed-item-hover-bg: rgba(63, 63, 70, 0.8);
+  /* Seed list item hover background */
+
+  --seed-badge-bg: rgba(99, 102, 241, 0.2);
+  /* Seed badge tag background */
+  --seed-badge-border: rgba(99, 102, 241, 0.4);
+  /* Seed badge tag border */
+  --seed-badge-text-color: #d0d4eb;
+  /* Seed badge tag text color */
+  --seed-badge-radius: 9999px;
+  /* Seed badge tag corner radius */
+  --seed-badge-font-size: 8px;
+  /* Seed badge tag font size */
+  --seed-badge-padding: 1px 3px;
+  /* Seed badge tag padding */
+
+  --seed-modal-overlay-bg: rgba(0, 0, 0, 0.759);
+  /* Seed modal backdrop overlay opacity */
+  --seed-modal-bg: #18181b;
+  /* Seed modal card background */
+  --seed-modal-border-color: #3f3f46;
+  /* Seed modal border color */
+  --seed-modal-border-width: 1px;
+  /* Seed modal border width */
+  --seed-modal-radius: 4px;
+  /* Seed modal corner radius */
+  --seed-modal-padding: 0.3rem;
+  /* Seed modal inner padding */
+  --seed-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  /* Seed modal drop shadow */
+
+  --seed-modal-header-bg: #27272a;
+  /* Seed modal header background */
+  --seed-modal-header-padding: 0.75rem 1rem;
+  /* Seed modal header padding */
+  --seed-modal-header-border: #3f3f46;
+  /* Seed modal header bottom border */
+  --seed-modal-title-color: #f4f4f5;
+  /* Seed modal title text color */
+  --seed-modal-title-font-size: 13px;
+  /* Seed modal title font size */
+  --seed-modal-title-font-weight: 600;
+  /* Seed modal title font weight */
+  --seed-modal-icon-color: #ffffff;
+  /* Seed modal title icon color */
+
+  --seed-modal-close-color: #a1a1aa;
+  /* Seed modal close button icon color */
+  --seed-modal-close-hover-color: #ffffff;
+  /* Seed modal close button hover color */
+  --seed-modal-close-hover-bg: rgba(255, 255, 255, 0.1);
+  /* Seed modal close button hover background */
+
+  --seed-modal-preview-bg: #09090b;
+  /* Seed modal image/video preview container background */
+  --seed-modal-preview-border: #27272a;
+  /* Seed modal preview container border */
+  --seed-modal-preview-radius: 6px;
+  /* Seed modal preview container corner radius */
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* WCAG 2.1 AA Keyboard Focus Visibility */
+:focus-visible {
+  outline: 2px solid var(--accent-color, #6366f1);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(9, 9, 11, 0.3);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(63, 63, 70, 0.4);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.6);
+}
+
+/* ==========================================================================
+   COMPONENT STYLES (Powered by CSS Variables)
+   ========================================================================== */
+
+/* Card Component (.ui-card) */
+.ui-card {
+  background-color: var(--card-bg) !important;
+  color: var(--card-text-color) !important;
+  border-color: var(--card-border-color) !important;
+  border-width: var(--card-border-width) !important;
+  border-style: var(--card-border-style) !important;
+  border-radius: var(--card-radius) !important;
+  padding: var(--card-padding) !important;
+  margin: var(--card-margin) !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+.ui-section {
+  margin: var(--section-margin);
+}
+
+.ui-section-header {
+  padding: var(--section-header-padding) !important;
+  background-color: var(--section-header-bg) !important;
+  transition: var(--transition-section);
+}
+
+.ui-section-header:hover {
+  background-color: var(--section-header-hover-bg) !important;
+}
+
+.ui-section-title {
+  color: var(--section-title-color) !important;
+  font-size: var(--section-title-font-size) !important;
+  font-weight: var(--section-title-font-weight) !important;
+  text-transform: var(--section-title-transform) !important;
+  letter-spacing: var(--section-title-tracking) !important;
+}
+
+.ui-section-header:hover .ui-section-title {
+  color: var(--section-title-hover-color) !important;
+}
+
+.ui-section-icon {
+  color: var(--section-icon-color) !important;
+}
+
+.ui-section-header:hover .ui-section-icon {
+  color: var(--section-icon-hover-color) !important;
+}
+
+.ui-section-content {
+  padding: var(--section-content-padding) !important;
+  margin: var(--section-content-margin, 0px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--section-content-gap, 8px) !important;
+}
+
+/* Disabled & Enabled Mode Section States */
+.ui-section.is-disabled .ui-section-header {
+  background-color: var(--section-disabled-bg) !important;
+}
+
+.ui-section.is-disabled .ui-section-title {
+  color: var(--section-disabled-title-color) !important;
+  text-transform: var(--section-disabled-title-transform) !important;
+}
+
+.ui-section.is-disabled .ui-section-content {
+  opacity: var(--section-disabled-opacity) !important;
+  transition: opacity var(--transition-fast);
+}
+
+.ui-section.is-enabled .ui-section-header {
+  background-color: var(--section-active-bg) !important;
+}
+
+.ui-section.is-enabled .ui-section-title {
+  color: var(--section-active-title-color) !important;
+  text-transform: var(--section-active-title-transform) !important;
+}
+
+.ui-section.is-enabled .ui-section-content {
+  opacity: 1 !important;
+  transition: opacity var(--transition-fast);
+}
+
+/* Icon Sizing Utility Classes */
+.ui-icon-sidebar {
+  width: var(--sidebar-toggle-icon-size, 16px) !important;
+  height: var(--sidebar-toggle-icon-size, 16px) !important;
+}
+
+.ui-section-icon {
+  width: var(--sidebar-section-icon-size, 13px) !important;
+  height: var(--sidebar-section-icon-size, 13px) !important;
+}
+
+.ui-section-chevron {
+  width: var(--sidebar-chevron-size, 12px) !important;
+  height: var(--sidebar-chevron-size, 12px) !important;
+}
+
+.ui-icon-hotbar svg,
+.ui-icon-hotbar .ui-icon {
+  width: var(--hotbar-icon-size, 14px) !important;
+  height: var(--hotbar-icon-size, 14px) !important;
+}
+
+.ui-hotbar-chevron svg {
+  width: var(--hotbar-chevron-size, 12px) !important;
+  height: var(--hotbar-chevron-size, 12px) !important;
+}
+
+/* Labels (.ui-label) */
+.ui-label {
+  font-size: var(--label-font-size) !important;
+  font-weight: var(--label-font-weight) !important;
+  color: var(--label-color) !important;
+  text-transform: var(--label-transform) !important;
+  letter-spacing: var(--label-tracking) !important;
+  margin: var(--label-margin) !important;
+}
+
+@media (min-width: 640px) {
+  .ui-label {
+    font-size: var(--label-font-size-sm) !important;
+  }
+}
+
+/* Action Buttons (.ui-btn) */
+.ui-btn {
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-font-weight);
+  font-size: var(--btn-font-size);
+  padding: var(--btn-padding);
+  border-width: var(--btn-border-width);
+  border-style: var(--btn-border-style);
+  min-height: var(--btn-height, auto);
+  letter-spacing: var(--btn-letter-spacing);
+  text-transform: var(--btn-text-transform);
+  transition: var(--transition-btn);
+}
+
+.ui-btn-icon,
+.ui-btn[class*="!p-0"] {
+  padding: 0 !important;
+}
+
+.ui-btn svg {
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.ui-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--input-focus-ring) !important;
+}
+
+.ui-btn-primary {
+  background-color: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-text) !important;
+  border-color: var(--btn-primary-border) !important;
+}
+
+.ui-btn-primary:hover:not(:disabled) {
+  background-color: var(--btn-primary-hover-bg) !important;
+}
+
+.ui-btn-secondary {
+  background-color: var(--btn-secondary-bg) !important;
+  color: var(--btn-secondary-text) !important;
+  border-color: var(--btn-secondary-border) !important;
+}
+
+.ui-btn-secondary:hover:not(:disabled) {
+  background-color: var(--btn-secondary-hover-bg) !important;
+}
+
+.ui-btn-ghost {
+  background-color: var(--btn-ghost-bg) !important;
+  color: var(--btn-ghost-text) !important;
+  border-color: var(--btn-ghost-border) !important;
+  font-size: var(--btn-ghost-font-size, var(--btn-font-size)) !important;
+  font-weight: var(--btn-ghost-font-weight, var(--btn-font-weight)) !important;
+  text-transform: var(--btn-ghost-text-transform, var(--btn-text-transform)) !important;
+  letter-spacing: var(--btn-ghost-letter-spacing, var(--btn-letter-spacing)) !important;
+  border-radius: var(--btn-ghost-radius, var(--btn-radius)) !important;
+}
+
+.ui-btn-ghost:hover:not(:disabled) {
+  background-color: var(--btn-ghost-hover-bg) !important;
+  color: var(--btn-ghost-hover-text) !important;
+}
+
+.ui-topbar .ui-btn {
+  font-size: var(--topbar-btn-font-size, var(--btn-ghost-font-size, var(--btn-font-size))) !important;
+  font-weight: var(--topbar-btn-font-weight, var(--btn-ghost-font-weight, var(--btn-font-weight))) !important;
+  text-transform: var(--topbar-btn-text-transform, var(--btn-ghost-text-transform, var(--btn-text-transform))) !important;
+  letter-spacing: var(--topbar-btn-letter-spacing, var(--btn-ghost-letter-spacing, var(--btn-letter-spacing))) !important;
+}
+
+.ui-topbar .ui-btn-ghost {
+  background-color: var(--topbar-btn-bg, var(--btn-ghost-bg)) !important;
+  color: var(--topbar-btn-text, var(--btn-ghost-text)) !important;
+  padding: var(--topbar-btn-padding, var(--btn-ghost-padding)) !important;
+  border-radius: var(--topbar-btn-radius, var(--btn-ghost-radius)) !important;
+}
+
+.ui-topbar .ui-btn-ghost:hover:not(:disabled) {
+  background-color: var(--topbar-btn-hover-bg, var(--btn-ghost-hover-bg)) !important;
+  color: var(--topbar-btn-hover-text, var(--btn-ghost-hover-text)) !important;
+}
+
+.ui-btn-outline {
+  background-color: var(--btn-outline-bg) !important;
+  border-color: var(--btn-outline-border) !important;
+  color: var(--btn-outline-text) !important;
+}
+
+.ui-btn-outline:hover:not(:disabled) {
+  background-color: var(--btn-outline-hover-bg) !important;
+}
+
+.ui-btn-destructive {
+  background-color: var(--btn-destructive-bg) !important;
+  color: var(--btn-destructive-text) !important;
+  border-color: var(--btn-destructive-border) !important;
+}
+
+.ui-btn-destructive:hover:not(:disabled) {
+  background-color: var(--btn-destructive-hover-bg) !important;
+}
+
+/* Input & Select Dropdowns (.ui-input) */
+input:not([type="range"]):not([type="checkbox"]):not([type="color"]):not([type="file"]),
+select,
+textarea,
+.ui-input {
+  background-color: var(--input-bg) !important;
+  border-width: var(--input-border-width) !important;
+  border-style: var(--input-border-style) !important;
+  border-color: var(--input-border-color) !important;
+  border-radius: var(--input-radius) !important;
+  color: var(--input-text-color) !important;
+  padding: var(--input-padding) !important;
+  font-size: var(--input-font-size) !important;
+  height: var(--input-height) !important;
+  transition: var(--transition-input);
+}
+
+input::placeholder,
+textarea::placeholder,
+.ui-input::placeholder {
+  color: var(--input-placeholder-color) !important;
+}
+
+input:focus-visible,
+select:focus,
+textarea:focus-visible,
+.ui-input:focus-visible {
+  outline: none;
+  border-color: var(--input-focus-border) !important;
+  box-shadow: 0 0 0 1px var(--input-focus-ring) !important;
+}
+
+/* ==========================================================================
+   RANGE SLIDERS (.ui-slider, input[type="range"])
+   ========================================================================== */
+input[type="range"].ui-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent !important;
+  height: var(--slider-track-height) !important;
+  width: 100%;
+}
+
+/* Vertical Zoom Range Slider Fix */
+input[type="range"].ui-slider.ui-slider-vertical,
+input[type="range"].ui-slider[style*="vertical"] {
+  height: 100% !important;
+  width: var(--slider-track-height) !important;
+}
+
+/* Slider Track styling */
+input[type="range"].ui-slider::-webkit-slider-runnable-track {
+  height: var(--slider-track-height) !important;
+  background-color: var(--slider-track-bg) !important;
+  border-radius: var(--slider-track-radius) !important;
+  border: var(--slider-track-border-width) solid var(--slider-track-border-color) !important;
+}
+
+input[type="range"].ui-slider::-moz-range-track {
+  height: var(--slider-track-height) !important;
+  background-color: var(--slider-track-bg) !important;
+  border-radius: var(--slider-track-radius) !important;
+  border: var(--slider-track-border-width) solid var(--slider-track-border-color) !important;
+}
+
+/* SLIDER CIRCLE (THUMB) STYLING */
+input[type="range"].ui-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--slider-thumb-size) !important;
+  height: var(--slider-thumb-size) !important;
+  border-radius: var(--slider-thumb-radius) !important;
+  background-color: var(--slider-thumb-bg) !important;
+  border: var(--slider-thumb-border-width) solid var(--slider-thumb-border-color) !important;
+  box-shadow: var(--slider-thumb-shadow) !important;
+  cursor: pointer !important;
+  margin-top: calc((var(--slider-track-height) - var(--slider-thumb-size)) / 2) !important;
+  transition: var(--transition-slider-thumb);
+}
+
+input[type="range"].ui-slider::-webkit-slider-thumb:hover {
+  background-color: var(--slider-thumb-hover-bg) !important;
+  transform: scale(var(--slider-thumb-hover-scale)) !important;
+}
+
+input[type="range"].ui-slider::-moz-range-thumb {
+  width: var(--slider-thumb-size) !important;
+  height: var(--slider-thumb-size) !important;
+  border-radius: var(--slider-thumb-radius) !important;
+  background-color: var(--slider-thumb-bg) !important;
+  border: var(--slider-thumb-border-width) solid var(--slider-thumb-border-color) !important;
+  box-shadow: var(--slider-thumb-shadow) !important;
+  cursor: pointer !important;
+  transition: var(--transition-slider-thumb);
+}
+
+input[type="range"].ui-slider::-moz-range-thumb:hover {
+  background-color: var(--slider-thumb-hover-bg) !important;
+  transform: scale(var(--slider-thumb-hover-scale)) !important;
+}
+
+/* ==========================================================================
+   TOGGLE SWITCHES (.ui-switch)
+   ========================================================================== */
+.ui-switch {
+  width: var(--switch-width) !important;
+  height: var(--switch-height) !important;
+  border-radius: var(--switch-radius) !important;
+  border-width: var(--switch-border-width) !important;
+  border-style: solid !important;
+  border-color: var(--switch-border-color) !important;
+  transition: var(--transition-input);
+}
+
+.ui-switch-off {
+  background-color: var(--switch-off-bg) !important;
+}
+
+.ui-switch-on {
+  background-color: var(--switch-on-bg) !important;
+}
+
+.ui-switch-thumb {
+  width: var(--switch-thumb-size) !important;
+  height: var(--switch-thumb-size) !important;
+  background-color: var(--switch-thumb-color) !important;
+  border-radius: var(--switch-thumb-radius) !important;
+  box-shadow: var(--switch-thumb-shadow) !important;
+  transition: transform 150ms ease;
+}
+
+/* ==========================================================================
+   PARAMETER CONTROL CONTAINERS (.ui-param-control)
+   ========================================================================== */
+.ui-param-control {
+  padding: var(--param-padding);
+  margin: var(--param-margin);
+  background-color: var(--param-bg);
+  border-radius: var(--param-radius);
+  border-color: var(--param-border-color);
+  border-width: var(--param-border-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--param-gap);
+  transition: var(--transition-param);
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.ui-param-header {
+  margin-bottom: var(--param-header-margin-bottom);
+  gap: var(--param-title-input-gap, 4px) !important;
+  width: 100%;
+  min-width: 0;
+}
+
+.ui-param-title {
+  color: var(--param-title-color);
+  font-size: var(--param-title-font-size);
+  font-weight: var(--param-title-font-weight);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ui-param-input {
+  width: var(--param-input-width, 52px) !important;
+  min-width: var(--param-input-min-width, 36px) !important;
+  max-width: var(--param-input-max-width, 60px) !important;
+  height: var(--param-input-height) !important;
+  background-color: var(--param-input-bg) !important;
+  color: var(--param-input-color) !important;
+  border-color: var(--param-input-border-color) !important;
+  border-radius: var(--param-input-radius) !important;
+  flex-shrink: 1 !important;
+  text-align: right !important;
+  font-size: 10px !important;
+  padding: 0 4px !important;
+}
+
+/* Context Menu (.ui-ctx-menu) */
+.ui-ctx-menu {
+  background-color: var(--ctx-menu-bg) !important;
+  border: 1px solid var(--ctx-menu-border) !important;
+  border-radius: var(--ctx-menu-radius) !important;
+  padding: var(--ctx-menu-padding) !important;
+}
+
+.ui-ctx-menu-item {
+  color: var(--ctx-menu-text) !important;
+  border-radius: var(--ctx-menu-radius) !important;
+}
+
+.ui-ctx-menu-item:hover {
+  background-color: var(--ctx-menu-hover-bg) !important;
+}
+
+/* Sidebars (.ui-sidebar) */
+.ui-sidebar {
+  background-color: var(--sidebar-bg) !important;
+  border-color: var(--sidebar-border-color) !important;
+  height: var(--sidebar-height) !important;
+  min-height: var(--sidebar-min-height) !important;
+  max-height: var(--sidebar-max-height) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-sizing: border-box !important;
+}
+
+.ui-sidebar-header {
+  height: var(--sidebar-header-height) !important;
+  padding: var(--sidebar-header-padding) !important;
+  background-color: var(--sidebar-header-bg) !important;
+  border-bottom-color: var(--sidebar-border-color) !important;
+  border-bottom-width: var(--sidebar-border-width, 1px) !important;
+  border-bottom-style: solid !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-sizing: border-box !important;
+}
+
+.ui-sidebar-header:hover {
+  background-color: var(--sidebar-header-hover-bg) !important;
+}
+
+.ui-sidebar-title {
+  color: var(--sidebar-title-color) !important;
+  font-size: var(--sidebar-title-font-size) !important;
+  font-weight: var(--sidebar-title-font-weight) !important;
+  text-transform: var(--sidebar-title-transform) !important;
+  letter-spacing: var(--sidebar-title-tracking) !important;
+}
+
+.ui-sidebar-content,
+.custom-scrollbar {
+  scrollbar-gutter: stable;
+  overflow-y: scroll !important;
+}
+
+/* Sidebar Resize Drag Handle (.ui-sidebar-resizer) */
+.ui-sidebar-resizer {
+  width: var(--sidebar-resizer-width, 6px) !important;
+  background-color: var(--sidebar-resizer-bg, transparent) !important;
+  transition: background-color var(--transition-fast);
+}
+
+.ui-sidebar-resizer:hover {
+  background-color: var(--sidebar-resizer-hover-bg, rgba(99, 102, 241, 0.5)) !important;
+}
+
+.ui-sidebar-resizer:active {
+  background-color: var(--sidebar-resizer-active-bg, rgba(99, 102, 241, 0.75)) !important;
+}
+
+/* Top Bar (.ui-topbar) */
+.ui-topbar {
+  background-color: var(--topbar-bg) !important;
+  border-bottom-color: var(--topbar-border-color) !important;
+  border-bottom-width: var(--topbar-border-width) !important;
+  border-bottom-style: solid !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  height: var(--topbar-height) !important;
+  padding: var(--topbar-padding) !important;
+  color: var(--topbar-text-color) !important;
+  backdrop-filter: var(--topbar-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--topbar-backdrop-filter) !important;
+  box-sizing: border-box !important;
+}
+
+/* Closed Sidebar Header (.ui-sidebar-closed-header, .ui-sidebar-closed-btn, .ui-sidebar-closed-icon) */
+.ui-sidebar-closed-header {
+  height: var(--sidebar-closed-header-height) !important;
+  width: var(--sidebar-closed-header-width) !important;
+  margin: var(--sidebar-closed-header-margin) !important;
+  padding: var(--sidebar-closed-header-padding) !important;
+  background-color: var(--sidebar-closed-header-bg) !important;
+  border-color: var(--sidebar-closed-header-border-color) !important;
+  border-width: var(--sidebar-closed-header-border-width) !important;
+  border-style: var(--sidebar-closed-header-border-style) !important;
+  border-radius: var(--sidebar-closed-header-radius) !important;
+  box-shadow: var(--sidebar-closed-header-shadow) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-sizing: border-box !important;
+}
+
+.ui-sidebar-closed-header:hover {
+  background-color: var(--sidebar-closed-header-hover-bg) !important;
+}
+
+.ui-sidebar-closed-btn {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: inherit !important;
+}
+
+.ui-sidebar-closed-icon {
+  width: var(--sidebar-closed-icon-size, 16px) !important;
+  height: var(--sidebar-closed-icon-size, 16px) !important;
+  color: var(--sidebar-closed-icon-color, #a1a1aa) !important;
+  transition: color var(--transition-fast);
+}
+
+.ui-sidebar-closed-header:hover .ui-sidebar-closed-icon,
+.ui-sidebar-closed-btn:hover .ui-sidebar-closed-icon {
+  color: var(--sidebar-closed-icon-hover-color, #ffffff) !important;
+}
+
+.ui-sidebar-minimized-icon {
+  width: var(--sidebar-minimized-icon-size, 16px) !important;
+  height: var(--sidebar-minimized-icon-size, 16px) !important;
+  color: var(--sidebar-minimized-icon-color, #71717a) !important;
+}
+
+/* Mobile Hamburger Menu (.ui-hamburger-btn, .ui-hamburger-icon, .ui-mobile-menu) */
+.ui-hamburger-btn {
+  background-color: var(--hamburger-btn-bg) !important;
+  border-color: var(--hamburger-btn-border) !important;
+  border-radius: var(--hamburger-btn-radius) !important;
+  padding: var(--hamburger-btn-padding) !important;
+  width: var(--hamburger-btn-width, 32px) !important;
+  height: var(--hamburger-btn-height, 32px) !important;
+}
+
+.ui-hamburger-btn:hover {
+  background-color: var(--hamburger-btn-hover-bg) !important;
+}
+
+.ui-hamburger-icon {
+  width: var(--hamburger-icon-size, 18px) !important;
+  height: var(--hamburger-icon-size, 18px) !important;
+  color: var(--hamburger-icon-color, #a1a1aa) !important;
+  transition: color var(--transition-fast);
+}
+
+.ui-hamburger-btn:hover .ui-hamburger-icon {
+  color: var(--hamburger-icon-hover-color, #ffffff) !important;
+}
+
+.ui-mobile-menu {
+  background-color: var(--mobile-menu-bg) !important;
+  border-color: var(--mobile-menu-border-color) !important;
+  border-width: var(--mobile-menu-border-width) !important;
+  border-style: solid !important;
+  border-radius: var(--mobile-menu-radius) !important;
+  padding: var(--mobile-menu-padding) !important;
+  width: var(--mobile-menu-width) !important;
+  box-shadow: var(--mobile-menu-shadow) !important;
+  backdrop-filter: var(--mobile-menu-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--mobile-menu-backdrop-filter) !important;
+  max-height: var(--mobile-menu-max-height, 80vh) !important;
+}
+
+.ui-mobile-menu-item {
+  background-color: var(--mobile-menu-item-bg) !important;
+  color: var(--mobile-menu-item-text-color) !important;
+  font-size: var(--mobile-menu-item-font-size) !important;
+  font-weight: var(--mobile-menu-item-font-weight) !important;
+  padding: var(--mobile-menu-item-padding) !important;
+  border-radius: var(--mobile-menu-item-radius) !important;
+  transition: background-color var(--transition-fast);
+}
+
+.ui-mobile-menu-item:hover {
+  background-color: var(--mobile-menu-item-hover-bg) !important;
+}
+
+.ui-mobile-menu-sub {
+  background-color: var(--mobile-menu-sub-bg) !important;
+  padding: var(--mobile-menu-sub-padding) !important;
+  border-radius: var(--mobile-menu-sub-radius) !important;
+}
+
+.ui-mobile-menu-sub-item {
+  font-size: var(--mobile-menu-sub-item-font-size) !important;
+  color: var(--mobile-menu-item-text-color) !important;
+  padding: 6px 8px !important;
+  border-radius: 4px !important;
+  transition: background-color var(--transition-fast);
+}
+
+.ui-mobile-menu-sub-item:hover {
+  background-color: var(--mobile-menu-item-hover-bg) !important;
+}
+
+.ui-mobile-menu-divider {
+  background-color: var(--mobile-menu-divider-color) !important;
+}
+
+/* ==========================================================================
+   MODAL CLASSES (.ui-modal, .ui-modal-overlay, .ui-modal-header, .ui-modal-title, .ui-modal-close, .ui-modal-body, .ui-modal-footer)
+   ========================================================================== */
+.ui-modal-overlay {
+  background-color: var(--modal-overlay-bg) !important;
+  backdrop-filter: var(--modal-overlay-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--modal-overlay-backdrop-filter) !important;
+  padding: var(--modal-overlay-padding) !important;
+}
+
+.ui-modal {
+  background-color: var(--modal-bg) !important;
+  color: var(--modal-text-color) !important;
+  border-color: var(--modal-border-color) !important;
+  border-width: var(--modal-border-width) !important;
+  border-style: var(--modal-border-style) !important;
+  border-radius: var(--modal-radius) !important;
+  padding: var(--modal-padding) !important;
+  box-shadow: var(--modal-shadow) !important;
+  backdrop-filter: var(--modal-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--modal-backdrop-filter) !important;
+  max-height: var(--modal-max-height) !important;
+}
+
+.ui-modal-header {
+  background-color: var(--modal-header-bg) !important;
+  padding: var(--modal-header-padding) !important;
+  border-bottom: var(--modal-header-border-bottom) !important;
+  margin-bottom: var(--modal-header-margin-bottom) !important;
+}
+
+.ui-modal-title {
+  color: var(--modal-title-color) !important;
+  font-size: var(--modal-title-font-size) !important;
+  font-weight: var(--modal-title-font-weight) !important;
+  text-transform: var(--modal-title-transform) !important;
+  letter-spacing: var(--modal-title-tracking) !important;
+  line-height: var(--modal-title-line-height) !important;
+}
+
+.ui-modal-title svg,
+.ui-modal-title .ui-icon {
+  color: var(--modal-title-icon-color) !important;
+}
+
+.ui-modal-close {
+  color: var(--modal-close-color) !important;
+  background-color: var(--modal-close-bg) !important;
+  padding: var(--modal-close-padding) !important;
+  border-radius: var(--modal-close-radius) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: color var(--transition-fast), background-color var(--transition-fast) !important;
+}
+
+.ui-modal-close:hover {
+  color: var(--modal-close-hover-color) !important;
+  background-color: var(--modal-close-hover-bg) !important;
+}
+
+.ui-modal-body {
+  padding: var(--modal-body-padding) !important;
+  gap: var(--modal-body-gap) !important;
+  color: var(--modal-body-text-color) !important;
+  font-size: var(--modal-body-font-size) !important;
+}
+
+.ui-modal-footer {
+  background-color: var(--modal-footer-bg) !important;
+  padding: var(--modal-footer-padding) !important;
+  border-top: var(--modal-footer-border-top) !important;
+  gap: var(--modal-footer-gap) !important;
+}
+
+/* Brush Toolbar (.ui-brush-bar) */
+.ui-brush-bar {
+  background-color: var(--brush-bar-bg) !important;
+  border-color: var(--brush-bar-border-color) !important;
+  border-width: var(--brush-bar-border-width) !important;
+  border-style: solid !important;
+  border-radius: var(--brush-bar-radius) !important;
+  padding: var(--brush-bar-padding) !important;
+  box-shadow: var(--brush-bar-shadow) !important;
+  backdrop-filter: var(--brush-bar-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--brush-bar-backdrop-filter) !important;
+}
+
+/* ==========================================================================
+   GLOBAL ICON STYLING & COLORING CLASSES (.ui-icon)
+   ========================================================================== */
+.ui-icon {
+  color: var(--icon-color-default) !important;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.ui-icon:hover {
+  color: var(--icon-color-hover) !important;
+}
+
+.ui-icon-active,
+.ui-icon-selected {
+  color: var(--icon-color-active) !important;
+}
+
+.ui-icon-highlight {
+  color: var(--icon-color-highlight) !important;
+}
+
+.ui-icon-sidebar {
+  color: var(--icon-color-sidebar) !important;
+}
+
+.ui-icon-hotbar {
+  color: var(--icon-color-hotbar) !important;
+}
+
+.ui-icon-hotbar-active {
+  color: var(--icon-color-hotbar-active) !important;
+}
+
+.ui-icon-toolbar {
+  color: var(--icon-color-toolbar) !important;
+}
+
+.ui-icon-toolbar-active {
+  color: var(--icon-color-toolbar-active) !important;
+}
+
+.ui-icon-section {
+  color: var(--icon-color-section) !important;
+}
+
+/* ==========================================================================
+   SEED MENUS & SEED MODALS CSS CLASSES (.ui-seed-menu, .ui-seed-modal)
+   ========================================================================== */
+
+/* Seed Menu Container (.ui-seed-menu) */
+.ui-seed-menu {
+  background-color: var(--seed-menu-bg) !important;
+  border: var(--seed-menu-border-width) solid var(--seed-menu-border-color) !important;
+  border-radius: var(--seed-menu-radius) !important;
+  padding: var(--seed-menu-padding) !important;
+  margin: var(--seed-menu-margin) !important;
+}
+
+/* Seed Type Button Grid (.ui-seed-type-btn) */
+.ui-seed-type-btn {
+  background-color: var(--seed-type-btn-bg) !important;
+  border: 1px solid var(--seed-type-btn-border-color) !important;
+  color: var(--seed-type-btn-text-color) !important;
+  border-radius: var(--seed-type-btn-radius) !important;
+  padding: var(--seed-type-btn-padding) !important;
+  transition: all var(--transition-fast);
+}
+
+.ui-seed-type-btn svg,
+.ui-seed-type-btn .ui-icon {
+  color: var(--seed-type-btn-icon-color) !important;
+}
+
+.ui-seed-type-btn:hover {
+  background-color: var(--seed-type-btn-hover-bg) !important;
+  border-color: var(--seed-type-btn-hover-border) !important;
+  color: var(--seed-type-btn-hover-text) !important;
+}
+
+.ui-seed-type-btn.active,
+.ui-seed-type-btn-active {
+  background-color: var(--seed-type-btn-active-bg) !important;
+  border-color: var(--seed-type-btn-active-border) !important;
+  color: var(--seed-type-btn-active-text) !important;
+}
+
+.ui-seed-type-btn.active svg,
+.ui-seed-type-btn-active svg {
+  color: var(--seed-type-btn-active-icon) !important;
+}
+
+/* Seed Item Container (.ui-seed-item) */
+.ui-seed-item {
+  background-color: var(--seed-item-bg) !important;
+  border: var(--seed-item-border-width) solid var(--seed-item-border-color) !important;
+  border-radius: var(--seed-item-radius) !important;
+  padding: var(--seed-item-padding) !important;
+  margin-bottom: var(--seed-item-margin-bottom) !important;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ui-seed-item:hover {
+  background-color: var(--seed-item-hover-bg) !important;
+}
+
+.ui-seed-item-title {
+  color: var(--seed-item-title-color) !important;
+}
+
+.ui-seed-item-icon {
+  color: var(--seed-item-icon-color) !important;
+}
+
+/* Seed Badge Tag (.ui-seed-badge) */
+.ui-seed-badge {
+  background-color: var(--seed-badge-bg) !important;
+  border: 1px solid var(--seed-badge-border) !important;
+  color: var(--seed-badge-text-color) !important;
+  border-radius: var(--seed-badge-radius) !important;
+  font-size: var(--seed-badge-font-size) !important;
+  padding: var(--seed-badge-padding) !important;
+}
+
+/* Seed Modals (.ui-seed-modal) */
+.ui-seed-modal-overlay {
+  background-color: var(--seed-modal-overlay-bg) !important;
+}
+
+.ui-seed-modal {
+  background-color: var(--seed-modal-bg) !important;
+  border: var(--seed-modal-border-width) solid var(--seed-modal-border-color) !important;
+  border-radius: var(--seed-modal-radius) !important;
+  padding: var(--seed-modal-padding) !important;
+  box-shadow: var(--seed-modal-shadow) !important;
+}
+
+.ui-seed-modal-header {
+  background-color: var(--seed-modal-header-bg) !important;
+  padding: var(--seed-modal-header-padding) !important;
+  border-bottom: 1px solid var(--seed-modal-header-border) !important;
+}
+
+.ui-seed-modal-title {
+  color: var(--seed-modal-title-color) !important;
+  font-size: var(--seed-modal-title-font-size) !important;
+  font-weight: var(--seed-modal-title-font-weight) !important;
+}
+
+.ui-seed-modal-icon {
+  color: var(--seed-modal-icon-color) !important;
+}
+
+.ui-seed-modal-close {
+  color: var(--seed-modal-close-color) !important;
+  border-radius: 4px;
+}
+
+.ui-seed-modal-close:hover {
+  color: var(--seed-modal-close-hover-color) !important;
+  background-color: var(--seed-modal-close-hover-bg) !important;
+}
+
+.ui-seed-modal-preview {
+  background-color: var(--seed-modal-preview-bg) !important;
+  border: 1px solid var(--seed-modal-preview-border) !important;
+  border-radius: var(--seed-modal-preview-radius) !important;
+}
+
+/* ==========================================================================
+   TOPBAR DROPDOWN MENUS (File, Presets, View) (.ui-topbar-dropdown)
+   ========================================================================== */
+.ui-topbar-dropdown {
+  background-color: var(--topbar-dropdown-bg) !important;
+  border: var(--topbar-dropdown-border-width) var(--topbar-dropdown-border-style, solid) var(--topbar-dropdown-border-color) !important;
+  border-radius: var(--topbar-dropdown-radius) !important;
+  box-shadow: var(--topbar-dropdown-shadow) !important;
+  padding: var(--topbar-dropdown-padding) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ui-topbar-dropdown-item {
+  padding: var(--topbar-dropdown-item-padding) !important;
+  border-radius: var(--topbar-dropdown-item-radius) !important;
+  font-size: var(--topbar-dropdown-item-font-size) !important;
+  color: var(--topbar-dropdown-item-color);
+  transition: var(--transition-btn);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ui-topbar-dropdown-item:hover {
+  background-color: var(--topbar-dropdown-item-hover-bg) !important;
+  color: var(--topbar-dropdown-item-hover-color) !important;
+}
+
+.ui-topbar-dropdown-header {
+  padding: var(--topbar-dropdown-header-padding) !important;
+  font-size: var(--topbar-dropdown-header-font-size) !important;
+  font-weight: var(--topbar-dropdown-header-font-weight) !important;
+  color: var(--topbar-dropdown-header-color) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ui-topbar-dropdown-divider {
+  height: 1px;
+  background-color: var(--topbar-dropdown-divider-color) !important;
+  margin: 4px 0 !important;
+}
+
+/* ==========================================================================
+   QUICK MODE HOTBAR CLASSES (.ui-quick-access, .ui-hotbar-item, .ui-hotbar-panel)
+   ========================================================================== */
+.ui-quick-access {
+  top: var(--hotbar-top);
+  gap: var(--hotbar-gap);
+  left: calc(var(--sidebar-offset, 44px) + var(--hotbar-left-gap, 16px));
+  transition: left var(--transition-slow), top var(--transition-fast);
+}
+
+.ui-hotbar-item {
+  background-color: var(--hotbar-item-bg) !important;
+  border: var(--hotbar-item-border-width) solid var(--hotbar-item-border-color) !important;
+  border-radius: var(--hotbar-item-radius) !important;
+  box-shadow: var(--hotbar-item-shadow) !important;
+  backdrop-filter: var(--hotbar-item-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--hotbar-item-backdrop-filter) !important;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), width var(--transition-normal);
+}
+
+.ui-hotbar-item:hover {
+  background-color: var(--hotbar-item-hover-bg) !important;
+  border-color: var(--hotbar-item-hover-border) !important;
+}
+
+.ui-hotbar-item.active-mode {
+  background-color: var(--hotbar-item-active-bg) !important;
+  border-color: var(--hotbar-item-active-border) !important;
+}
+
+.ui-hotbar-item-header {
+  height: var(--hotbar-item-height) !important;
+  padding: var(--hotbar-item-padding) !important;
+}
+
+.ui-hotbar-panel {
+  width: var(--hotbar-panel-width) !important;
+  background-color: var(--hotbar-panel-bg) !important;
+  border: var(--hotbar-item-border-width) solid var(--hotbar-panel-border-color) !important;
+  border-radius: var(--hotbar-panel-radius) !important;
+  box-shadow: var(--hotbar-panel-shadow) !important;
+}
+
+.ui-hotbar-panel-body {
+  padding: var(--hotbar-panel-padding) !important;
+}
+
+.ui-hotbar-label {
+  color: var(--hotbar-label-color) !important;
+  font-size: var(--hotbar-label-font-size) !important;
+  font-weight: var(--hotbar-label-font-weight) !important;
+}
+
+.ui-hotbar-chevron {
+  color: var(--hotbar-chevron-color) !important;
+}
+
+.ui-hotbar-chevron:hover {
+  color: var(--hotbar-chevron-hover-color) !important;
+}
+
+.ui-quick-access {
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.ui-quick-access.is-visible.sidebar-open,
+.ui-quick-access.sidebar-open {
+  opacity: var(--hotbar-sidebar-open-opacity, 0.4);
+}
+
+.ui-quick-access.is-visible.sidebar-open:hover,
+.ui-quick-access.sidebar-open:hover {
+  opacity: 1;
+}
+
+.ui-quick-access.is-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* ==========================================================================
+   AUTOMATION DEVICES & MODULES CSS CLASSES (.ui-device, .ui-device-header, .ui-device-title, .ui-device-scope, .ui-device-add)
+   ========================================================================== */
+.ui-device {
+  background-color: var(--device-bg) !important;
+  border-color: var(--device-border-color) !important;
+  border-width: var(--device-border-width) !important;
+  border-style: solid !important;
+  border-radius: var(--device-radius) !important;
+  margin: var(--device-margin) !important;
+  box-shadow: var(--device-shadow) !important;
+  transition: all var(--transition-fast);
+}
+
+.ui-device-header {
+  background-color: var(--device-header-bg) !important;
+  height: var(--device-header-height) !important;
+  padding: var(--device-header-padding) !important;
+  border-bottom: var(--device-header-border-bottom) !important;
+  transition: background-color var(--transition-fast);
+}
+
+.ui-device-header:hover {
+  background-color: var(--device-header-hover-bg) !important;
+}
+
+.ui-device-title {
+  color: var(--device-title-color) !important;
+  font-size: var(--device-title-font-size) !important;
+  font-weight: var(--device-title-font-weight) !important;
+  text-transform: var(--device-title-transform) !important;
+  letter-spacing: var(--device-title-tracking) !important;
+}
+
+.ui-device-dot {
+  width: var(--device-dot-size) !important;
+  height: var(--device-dot-size) !important;
+}
+
+.ui-device-scope {
+  background-color: var(--device-scope-bg) !important;
+  border: 1px solid var(--device-scope-border) !important;
+  height: var(--device-scope-height) !important;
+  border-radius: var(--device-scope-radius) !important;
+}
+
+.ui-device-add {
+  background-color: var(--device-add-bg) !important;
+  border: 2px dashed var(--device-add-border-color) !important;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ui-device-add:hover {
+  background-color: var(--device-add-hover-bg) !important;
+  border-color: var(--device-add-hover-border) !important;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE OVERRIDES (@media (max-width: 768px))
+   All mobile variables are defined in :root above (lines 430-480) for easy editing!
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* 1. CLOSED SIDEBARS ON MOBILE */
+  .ui-sidebar.ui-sidebar-minimized {
+    width: var(--sidebar-closed-width-mobile) !important;
+    height: 100% !important;
+    top: 0 !important;
+    background-color: var(--sidebar-closed-bg-mobile) !important;
+    border-color: var(--sidebar-closed-border-color-mobile) !important;
+    box-shadow: none !important;
+    backdrop-filter: var(--sidebar-closed-backdrop-filter-mobile, none) !important;
+    -webkit-backdrop-filter: var(--sidebar-closed-backdrop-filter-mobile, none) !important;
+    pointer-events: auto !important;
+  }
+
+  .ui-sidebar.ui-sidebar-minimized .ui-sidebar-closed-header,
+  .ui-sidebar.ui-sidebar-minimized .ui-sidebar-header {
+    background-color: var(--sidebar-closed-header-bg-mobile) !important;
+    border-color: var(--sidebar-closed-header-border-color-mobile) !important;
+    border-width: var(--sidebar-closed-header-border-width-mobile) !important;
+    border-style: solid !important;
+    border-radius: var(--sidebar-closed-header-radius-mobile) !important;
+    margin: var(--sidebar-closed-header-margin-mobile) !important;
+    padding: 0 !important;
+    width: var(--sidebar-closed-header-width-mobile) !important;
+    height: var(--sidebar-closed-header-height-mobile) !important;
+    box-shadow: var(--sidebar-closed-header-shadow-mobile) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  .ui-sidebar.ui-sidebar-minimized .ui-sidebar-closed-icon {
+    width: var(--sidebar-closed-icon-size-mobile, 16px) !important;
+    height: var(--sidebar-closed-icon-size-mobile, 16px) !important;
+    color: var(--sidebar-closed-icon-color-mobile, #a1a1aa) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  .ui-sidebar.ui-sidebar-minimized .ui-sidebar-minimized-body,
+  .ui-sidebar.ui-sidebar-minimized>div:not(.ui-sidebar-closed-header):not(.ui-sidebar-header) {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    backdrop-filter: var(--sidebar-closed-lower-backdrop-filter-mobile, none) !important;
+    -webkit-backdrop-filter: var(--sidebar-closed-lower-backdrop-filter-mobile, none) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  /* 2. OPEN SIDEBARS ON MOBILE */
+  .ui-sidebar:not(.ui-sidebar-minimized) {
+    background-color: var(--sidebar-bg-mobile) !important;
+    border-color: var(--sidebar-border-color-mobile) !important;
+    border-width: var(--sidebar-border-width-mobile) !important;
+    max-width: var(--sidebar-max-width-mobile) !important;
+    height: var(--sidebar-height-mobile) !important;
+    padding: var(--sidebar-padding-mobile) !important;
+    top: 0 !important;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.7) !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) .ui-sidebar-header {
+    height: var(--sidebar-header-height-mobile) !important;
+    padding: var(--sidebar-header-padding-mobile) !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) .ui-sidebar-title {
+    font-size: var(--sidebar-title-font-size-mobile) !important;
+    font-weight: var(--sidebar-title-font-weight-mobile) !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) .ui-section {
+    margin: var(--sidebar-section-margin-mobile) !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) .ui-section-header {
+    padding: var(--sidebar-section-header-padding-mobile) !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) .ui-section-title {
+    font-size: var(--sidebar-section-title-size-mobile) !important;
+    font-weight: var(--sidebar-section-title-weight-mobile) !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) .ui-section-content {
+    padding: var(--sidebar-section-content-padding-mobile) !important;
+    gap: var(--sidebar-section-content-gap-mobile) !important;
+  }
+
+  .ui-sidebar:not(.ui-sidebar-minimized) * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. MOBILE TOP BAR OVERRIDES */
+  .ui-topbar {
+    height: var(--topbar-height-mobile) !important;
+    padding: var(--topbar-padding-mobile) !important;
+    background-color: var(--topbar-bg-mobile) !important;
+  }
+
+  .ui-topbar .ui-btn {
+    font-size: var(--topbar-btn-font-size-mobile) !important;
+    font-weight: var(--topbar-btn-font-weight-mobile) !important;
+    text-transform: var(--topbar-btn-text-transform-mobile) !important;
+    padding: var(--topbar-btn-padding-mobile) !important;
+  }
+
+  /* 4. MOBILE PARAMETER SPACING & FONT SIZES */
+  .ui-param-row {
+    padding: var(--param-padding-mobile) !important;
+  }
+
+  .ui-param-title {
+    font-size: var(--param-title-font-size-mobile) !important;
+    max-width: calc(100% - 68px) !important;
+  }
+
+  .ui-param-input {
+    width: var(--param-input-width-mobile) !important;
+    min-width: 48px !important;
+    max-width: 64px !important;
+    height: var(--param-input-height-mobile) !important;
+    font-size: var(--param-input-font-size-mobile) !important;
+  }
+
+  .ui-param-header {
+    gap: var(--param-gap-mobile) !important;
+    width: 100% !important;
+  }
+
+  /* 5. MOBILE TOOLBARS & CONTROLS */
+  .ui-brush-bar {
+    padding: 6px 8px !important;
+    max-width: min(260px, calc(100vw - 104px)) !important;
+  }
+
+  .ui-zoom-bar {
+    padding: var(--zoom-bar-padding-mobile, 6px 8px) !important;
+  }
+
+  .ui-cookie-notice-card {
+    border-radius: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   WELCOME CARD INTRO & CUTOUT OVERLAY (.welcome-*)
+   All timings, easings, colors, and layout properties for the intro card.
+   ========================================================================== */
+:root {
+  /* Solid veil transition on initial launch */
+  --welcome-solid-bg: #000000;
+  --welcome-solid-fade-duration: 250ms;
+  --welcome-solid-fade-easing: ease-out;
+
+  /* Card and Viewport geometry */
+  --welcome-card-radius: 8px;
+  --welcome-card-bg: rgba(12, 12, 14, 0.98);
+  --welcome-card-border: rgba(255, 255, 255, 0.08);
+  --welcome-card-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8);
+
+  /* Transparent cutout viewport */
+  --welcome-viewport-border: rgba(255, 255, 255, 0.12);
+  --welcome-viewport-radius: 8px;
+
+  /* Dismissal animation durations & easings (1 second fade) */
+  --welcome-fade-card-duration: 1000ms;
+  --welcome-fade-card-easing: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --welcome-fade-overlay-duration: 1000ms;
+  --welcome-fade-overlay-easing: ease-out;
+
+  /* Minimalist typography */
+  --welcome-title-small-color: #a1a1aa;
+  --welcome-title-small-size: 11px;
+  --welcome-title-small-transform: uppercase;
+  --welcome-title-small-tracking: 0.12em;
+
+  --welcome-title-large-color: #ffffff;
+  --welcome-title-large-size: 26px;
+  --welcome-title-large-weight: 500;
+
+  --welcome-text-color: #d4d4d8;
+  --welcome-text-size: 12px;
+  --welcome-text-line-height: 1.6;
+
+  --welcome-accent-color: #6366f1;
+  --welcome-accent-hover: #4f46e5;
+}
+
+/* Layer 1: Solid pitch-black veil covering everything before cutout */
+.welcome-solid-veil {
+  position: fixed;
+  inset: 0;
+  background-color: var(--welcome-solid-bg);
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity var(--welcome-solid-fade-duration) var(--welcome-solid-fade-easing);
+}
+
+/* Layer 2: Main Welcome Card Container */
+.welcome-overlay-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  user-select: none;
+  cursor: pointer;
+  transition: opacity var(--welcome-fade-overlay-duration) var(--welcome-fade-overlay-easing);
+}
+
+/* 2-Part Card Shell: The outer box has 8px rounded corners and a 100vmax black mask around it */
+.welcome-card-shell {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  min-height: 380px;
+  border-radius: var(--welcome-card-radius);
+  box-shadow: 0 0 0 100vmax var(--welcome-solid-bg);
+  outline: 100vmax solid var(--welcome-solid-bg);
+  outline-offset: -1px;
+  overflow: hidden;
+  z-index: 10;
+  background: transparent;
+  transition: opacity var(--welcome-fade-card-duration) var(--welcome-fade-card-easing),
+    transform var(--welcome-fade-card-duration) var(--welcome-fade-card-easing);
+  cursor: default;
+}
+
+/* Viewport window: completely transparent (lets canvas show through) */
+.welcome-viewport-window {
+  position: relative;
+  background: transparent;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+/* Content Pane: solid dark background, crisp text, high contrast */
+.welcome-content-pane {
+  position: relative;
+  z-index: 20;
+  background-color: var(--welcome-card-bg);
+  border-left: 1px solid var(--welcome-card-border);
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  color: var(--welcome-text-color);
+}
+
+@media (max-width: 767px) {
+  .welcome-card-shell {
+    max-width: 350px !important;
+    min-height: auto !important;
+    border-radius: 12px !important;
+  }
+
+  .welcome-viewport-window {
+    height: 90px !important;
+    min-height: 80px !important;
+  }
+
+  .welcome-content-pane {
+    border-left: none;
+    border-top: 1px solid var(--welcome-card-border);
+    padding: 14px 16px !important;
+  }
+
+  .welcome-header-title {
+    font-size: 18px !important;
+  }
+
+  .welcome-description {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  .welcome-photosensitivity-box {
+    padding: 6px 8px !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .welcome-photosensitivity-text {
+    font-size: 9.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  .welcome-preset-pill {
+    font-size: 9.5px !important;
+    height: 19px !important;
+    padding: 1px 7px !important;
+  }
+}
+
+/* Typography & Sub-elements */
+.welcome-header-small {
+  font-size: var(--welcome-title-small-size);
+  color: var(--welcome-title-small-color);
+  text-transform: var(--welcome-title-small-transform);
+  letter-spacing: var(--welcome-title-small-tracking);
+  font-weight: 600;
+}
+
+.welcome-header-title {
+  font-size: var(--welcome-title-large-size);
+  color: var(--welcome-title-large-color);
+  font-weight: var(--welcome-title-large-weight);
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+}
+
+.welcome-description {
+  font-size: var(--welcome-text-size);
+  color: var(--welcome-text-color);
+  line-height: var(--welcome-text-line-height);
+}
+
+.welcome-feature-item {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background-color: rgba(24, 24, 27, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+  color: #e4e4e7;
+}
+
+.welcome-btn-primary {
+  background-color: var(--welcome-accent-color);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 6px;
+  transition: background-color 150ms ease, transform 100ms ease;
+  cursor: pointer;
+}
+
+.welcome-btn-primary:hover {
+  background-color: var(--welcome-accent-hover);
+}
+
+/* ==========================================================================
+   Global Settings Modal Tokens & Responsive Layout
+   ========================================================================== */
+:root {
+  --global-modal-max-width: 500px;
+  --global-modal-max-height: 60vh;
+  --global-modal-padding: 14px 16px;
+  --global-modal-content-padding: 4px 8px;
+  --global-modal-section-gap: 6px;
+  --global-modal-row-gap: 5px;
+  --global-modal-bg: #121215;
+  --global-modal-border: rgba(255, 255, 255, 0.09);
+}
+
+.global-settings-modal-card {
+  width: 100%;
+  max-width: var(--global-modal-max-width);
+  max-height: var(--global-modal-max-height);
+  padding: var(--global-modal-padding);
+  background-color: var(--global-modal-bg);
+  border: 1px solid var(--global-modal-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.global-settings-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--global-modal-content-padding);
+}
+
+.global-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--global-modal-row-gap);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.welcome-btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Sidebar Accordions Animation & Layout Tokens
+   ========================================================================== */
+:root {
+  --sidebar-accordion-duration: 260ms;
+  --sidebar-accordion-easing: cubic-bezier(0.25, 1, 0.5, 1);
+  --sidebar-accordion-opacity-duration: 200ms;
+  --sidebar-sub-accordion-duration: 220ms;
+  --sidebar-sub-accordion-easing: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Main Accordion Containers (Seeds, Effects) */
+.sidebar-main-accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background-color: rgba(24, 24, 27, 0.4);
+  overflow: hidden;
+  transition: border-color 150ms ease;
+  min-height: 36px;
+}
+
+.sidebar-main-accordion.is-open {
+  flex: 1 1 0%;
+  min-height: 36px;
+}
+
+.sidebar-main-accordion.is-closed {
+  flex: 0 0 auto;
+  min-height: 36px;
+}
+
+.sidebar-accordion-header {
+  min-height: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+/* Main Accordion Body Grid Expanding/Collapsing Animation */
+.sidebar-accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--sidebar-accordion-duration) var(--sidebar-accordion-easing);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.sidebar-accordion-body.is-open {
+  grid-template-rows: 1fr;
+  flex: 1 1 0%;
+  min-height: 0;
+}
+
+.sidebar-accordion-body.is-closed {
+  grid-template-rows: 0fr;
+  flex: 0 0 0px;
+}
+
+.sidebar-accordion-inner {
+  min-height: 0;
+  overflow: hidden;
+  transition: opacity var(--sidebar-accordion-opacity-duration) var(--sidebar-accordion-easing);
+}
+
+.sidebar-accordion-body.is-open .sidebar-accordion-inner {
+  opacity: 1;
+  overflow-y: auto;
+}
+
+.sidebar-accordion-body.is-closed .sidebar-accordion-inner {
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Individual Effect Item Sub-Accordions in Effects Stack */
+.ui-effect-body-accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--sidebar-sub-accordion-duration) var(--sidebar-sub-accordion-easing);
+  overflow: hidden;
+}
+
+.ui-effect-body-accordion.is-open {
+  grid-template-rows: 1fr;
+}
+
+.ui-effect-body-accordion.is-closed {
+  grid-template-rows: 0fr;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.ui-effect-body-inner {
+  min-height: 0;
+  overflow: hidden;
+  transition: opacity var(--sidebar-sub-accordion-duration) var(--sidebar-sub-accordion-easing);
+}
+
+.ui-effect-body-accordion.is-open .ui-effect-body-inner {
+  opacity: 1;
+}
+
+.ui-effect-body-accordion.is-closed .ui-effect-body-inner {
+  opacity: 0;
+  pointer-events: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  border: none !important;
+}
+
+/* Accordion Chevron Rotation Animation */
+.sidebar-chevron-icon {
+  transition: transform var(--sidebar-accordion-duration) var(--sidebar-accordion-easing);
+}
+
+.sidebar-chevron-icon.is-open {
+  transform: rotate(90deg);
+}
+
+.sidebar-chevron-icon.is-closed {
+  transform: rotate(0deg);
+}
+
+/* ==========================================================================
+   EFFECT TYPE DESIGN TOKENS & ICON COLOR REGISTRY
+   ========================================================================== */
+:root {
+  /* Core Physics & Reactions */
+  --fx-color-physics: #818cf8;
+  --fx-color-grayscott: #38bdf8;
+  --fx-color-reactionkinetics: #ec4899;
+  --fx-color-quantumphase: #a855f7;
+  --fx-color-excitable: #06b6d4;
+  --fx-color-soca: #f472b6;
+  --fx-color-surfacetension: #14b8a6;
+
+  /* Fluid Dynamics & Mechanics */
+  --fx-color-flow: #34d399;
+  --fx-color-vortex: #fbbf24;
+  --fx-color-turbulence: #a78bfa;
+  --fx-color-gravity: #f87171;
+  --fx-color-lga: #2dd4bf;
+  --fx-color-lbm: #0ea5e9;
+  --fx-color-thermalconvection: #f97316;
+
+  /* Cellular Automata & ALife */
+  --fx-color-gol: #4ade80;
+  --fx-color-fractal: #67e8f9;
+  --fx-color-walker: #fb923c;
+  --fx-color-crystalsnowflake: #38bdf8;
+  --fx-color-lenia: #10b981;
+  --fx-color-physarum: #84cc16;
+
+  /* Control, Optics & Dimensions */
+  --fx-color-stabilizer: #e879f9;
+  --fx-color-chromatic: #f43f5e;
+  --fx-color-sharpen: #facc15;
+  --fx-color-multidim: #c084fc;
+  --fx-color-electricarcs: #3b82f6;
+
+  /* Accordion Header Main Icons */
+  --accordion-seeds-icon-color: #34d399;
+  --accordion-effects-icon-color: #818cf8;
+
+  /* Active Status Indicator "Green Light" */
+  --status-dot-size: 7px;
+  --status-dot-color: #34d399;
+  --status-dot-glow: 0 0 6px rgba(52, 211, 153, 0.85);
+  --status-dot-border: none;
+  --status-dot-border-radius: 9999px;
+
+  /* Seed Type Design Tokens */
+  --seed-color-random: #a855f7;
+  --seed-color-shapes: #f59e0b;
+  --seed-color-perlin: #10b981;
+  --seed-color-grid: #06b6d4;
+  --seed-color-math: #ec4899;
+  --seed-color-text: #818cf8;
+  --seed-color-image: #38bdf8;
+  --seed-color-video: #f43f5e;
+  --seed-color-webcam: #eab308;
+}
+
+/* Status Indicator Dot */
+.ui-active-status-dot {
+  width: var(--status-dot-size);
+  height: var(--status-dot-size);
+  background-color: var(--status-dot-color);
+  box-shadow: var(--status-dot-glow);
+  border: var(--status-dot-border);
+  border-radius: var(--status-dot-border-radius);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Accordion Header Main Section Icons */
+.ui-accordion-seeds-icon {
+  color: var(--accordion-seeds-icon-color);
+}
+
+.ui-accordion-effects-icon {
+  color: var(--accordion-effects-icon-color);
+}
+
+/* Effect Icon Colors */
+.effect-icon-physics { color: var(--fx-color-physics); }
+.effect-icon-grayScott { color: var(--fx-color-grayscott); }
+.effect-icon-reactionKinetics { color: var(--fx-color-reactionkinetics); }
+.effect-icon-quantumPhase { color: var(--fx-color-quantumphase); }
+.effect-icon-excitable { color: var(--fx-color-excitable); }
+.effect-icon-soca { color: var(--fx-color-soca); }
+.effect-icon-surfaceTension { color: var(--fx-color-surfacetension); }
+.effect-icon-flow { color: var(--fx-color-flow); }
+.effect-icon-vortex { color: var(--fx-color-vortex); }
+.effect-icon-turbulence { color: var(--fx-color-turbulence); }
+.effect-icon-gravity { color: var(--fx-color-gravity); }
+.effect-icon-lga { color: var(--fx-color-lga); }
+.effect-icon-lbm { color: var(--fx-color-lbm); }
+.effect-icon-thermalConvection { color: var(--fx-color-thermalconvection); }
+.effect-icon-gol { color: var(--fx-color-gol); }
+.effect-icon-fractal { color: var(--fx-color-fractal); }
+.effect-icon-walker { color: var(--fx-color-walker); }
+.effect-icon-crystalSnowflake { color: var(--fx-color-crystalsnowflake); }
+.effect-icon-lenia { color: var(--fx-color-lenia); }
+.effect-icon-physarum { color: var(--fx-color-physarum); }
+.effect-icon-stabilizer { color: var(--fx-color-stabilizer); }
+.effect-icon-chromatic { color: var(--fx-color-chromatic); }
+.effect-icon-sharpen { color: var(--fx-color-sharpen); }
+.effect-icon-multiDim { color: var(--fx-color-multidim); }
+.effect-icon-electricArcs { color: var(--fx-color-electricarcs); }
+
+/* Seed Icon Colors */
+.seed-icon-random { color: var(--seed-color-random); }
+.seed-icon-shapes { color: var(--seed-color-shapes); }
+.seed-icon-perlin { color: var(--seed-color-perlin); }
+.seed-icon-grid { color: var(--seed-color-grid); }
+.seed-icon-math { color: var(--seed-color-math); }
+.seed-icon-text { color: var(--seed-color-text); }
+.seed-icon-image { color: var(--seed-color-image); }
+.seed-icon-video { color: var(--seed-color-video); }
+.seed-icon-webcam { color: var(--seed-color-webcam); }
+
+/* Presets Dropdown Compact Layout */
+.ui-preset-dropdown-item {
+  padding: 3px 6px !important;
+  border-radius: 3px !important;
+  font-size: 10px !important;
+  color: #d4d4d8;
+  transition: background-color 150ms ease, color 150ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.ui-preset-dropdown-item:hover {
+  background-color: #27272a !important;
+}
+
+.ui-preset-dropdown-title {
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #e4e4e7;
+  transition: color 150ms ease;
+}
+
+.ui-preset-dropdown-item:hover .ui-preset-dropdown-title {
+  color: #818cf8;
+}
+
+.ui-preset-dropdown-desc {
+  font-size: 8px;
+  line-height: 1.1;
+  color: #71717a;
+  margin-top: 1px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

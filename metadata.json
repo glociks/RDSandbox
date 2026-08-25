@@ -1,0 +1,8 @@
+{
+  "name": "McRD Pattern Generator",
+  "description": "Interactive exploration of Mass-Conserving Reaction-Diffusion systems based on the physics of intracellular protein patterning.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
