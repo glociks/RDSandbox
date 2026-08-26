@@ -1,4 +1,4 @@
-# Reaction-Diffusion VFX Sandbox (McRD Generator)
+# Reaction-Diffusion VFX Sandbox
 
 <div align="center">
 
